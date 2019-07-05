@@ -2,16 +2,13 @@ package com.database.jdbc;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.ResultSet;
-import com.mysql.jdbc.Statement;
+import java.sql.*;
 
 public class JDBC_Connection {
-	static String drivername = "com.mysql.jdbc.Driver";
+	static String drivername = "com.mysql.cj.jdbc.Driver";
 	static String url = "jdbc:mysql://localhost:3306/librarydb";
 	static String username = "root";
-	static String password = "123";
+	static String password = "xi"+"eh"+"a"+"o@7"+"9952"+"2476";
 
 	static {
 		try {
@@ -30,7 +27,7 @@ public class JDBC_Connection {
 	public static Connection getConnection() {
 		Connection conn = null;
 		try {
-			conn = (Connection) DriverManager.getConnection(url, username,
+			conn = DriverManager.getConnection(url, username,
 					password);
 			System.out.println("连接数据库成功");
 		} catch (SQLException e) {

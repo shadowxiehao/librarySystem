@@ -3,10 +3,8 @@ package com.database.jdbc;
 import java.sql.SQLException;
 
 import com.database.bean.Admin;
-import com.mysql.jdbc.Driver;
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.PreparedStatement;
-import com.mysql.jdbc.ResultSet;
+import java.sql.*;
+
 
 /***
  * 这个类用户对admin表进行相关的数据库操作
@@ -27,9 +25,9 @@ public class DatabaseHandlerAdmin {
 		try{
 			conn=JDBC_Connection.getConnection();
 			String sql_select_admintable="select * from admintable where admin_username=?";
-			pstm=(PreparedStatement) conn.prepareStatement(sql_select_admintable);
+			pstm= conn.prepareStatement(sql_select_admintable);
 			pstm.setString(1, admin_username);
-			rs=(ResultSet) pstm.executeQuery();
+			rs= pstm.executeQuery();
 			while(rs.next()){
 				admin=new Admin();
 				admin.setAdmin_username(rs.getString("admin_username"));

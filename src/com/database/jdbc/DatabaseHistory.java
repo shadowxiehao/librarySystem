@@ -4,10 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import com.database.bean.History;
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.PreparedStatement;
-import com.mysql.jdbc.ResultSet;
-
+import java.sql.*;
 /**
  * 对于历史表的相关操作
  * 
@@ -27,7 +24,7 @@ public class DatabaseHistory {
 		try {
 			conn = JDBC_Connection.getConnection();
 			String sql_insert_into_history = "INSERT INTO historytable(history_username,history_book_number,history_book_name,history_borrow_time)Values(?,?,?,?)";
-			pstm = (PreparedStatement) conn
+			pstm = conn
 					.prepareStatement(sql_insert_into_history);
 			pstm.setString(1, history.getHistory_username());
 			pstm.setString(2, history.getHistory_book_number());
@@ -56,10 +53,10 @@ public class DatabaseHistory {
 		try {
 			conn = JDBC_Connection.getConnection();
 			String sql_select_booktable = "select * from historytable where history_username=?";
-			pstm = (PreparedStatement) conn
+			pstm = conn
 					.prepareStatement(sql_select_booktable);
 			pstm.setString(1, history_username);
-			rs = (ResultSet) pstm.executeQuery();
+			rs = pstm.executeQuery();
 			while (rs.next()) {
 				History history = new History();
 				history.setHistory_username(rs.getString("history_username"));

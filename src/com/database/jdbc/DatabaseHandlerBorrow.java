@@ -6,10 +6,8 @@ import javax.swing.JOptionPane;
 
 import com.database.bean.Book;
 import com.database.bean.Borrow;
+import java.sql.*;
 
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.PreparedStatement;
-import com.mysql.jdbc.ResultSet;
 
 /***
  * 对borrow表的相关操作
@@ -28,7 +26,7 @@ public class DatabaseHandlerBorrow {
 		try {
 			conn = JDBC_Connection.getConnection();
 			String sql_insert_into_borrow = "INSERT INTO borrowtable(borrow_reader_username,borrow_book_number,borrow_book_name,borrow_time)Values(?,?,?,?)";
-			pstm = (PreparedStatement) conn
+			pstm = conn
 					.prepareStatement(sql_insert_into_borrow);
 			pstm.setString(1, borrow.getBorrow_reader_username());
 			pstm.setString(2, borrow.getBorrow_book_number());
@@ -60,10 +58,10 @@ public class DatabaseHandlerBorrow {
 		try {
 			conn = JDBC_Connection.getConnection();
 			String sql_select_booktable = "select * from borrowtable where borrow_book_number=?";
-			pstm = (PreparedStatement) conn
+			pstm = conn
 					.prepareStatement(sql_select_booktable);
 			pstm.setString(1, borrow_book_number);
-			rs = (ResultSet) pstm.executeQuery();
+			rs = pstm.executeQuery();
 			while (rs.next()) {
 				borrow = new Borrow();
 				borrow.setBorrow_reader_username(rs.getString("borrow_reader_username"));
@@ -91,7 +89,7 @@ public class DatabaseHandlerBorrow {
 		try {
 			conn = JDBC_Connection.getConnection();
 			String sql_delete_borrow = "delete from borrowtable where borrow_book_number=?";
-			pstm = (PreparedStatement) conn.prepareStatement(sql_delete_borrow);
+			pstm = conn.prepareStatement(sql_delete_borrow);
 			pstm.setString(1, borrow_book_number);
 			pstm.executeUpdate();
 		} catch (SQLException e) {

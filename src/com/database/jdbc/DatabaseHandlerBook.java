@@ -4,9 +4,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import com.database.bean.Book;
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.PreparedStatement;
-import com.mysql.jdbc.ResultSet;
+import java.sql.*;
+
 
 /**
  * 对book表进行相关操作
@@ -30,10 +29,10 @@ public class DatabaseHandlerBook {
 		try {
 			conn = JDBC_Connection.getConnection();
 			String sql_select_bookname = "select * from booktable where book_name LIKE ?";
-			pstm = (PreparedStatement) conn
+			pstm = conn
 					.prepareStatement(sql_select_bookname);
 			pstm.setString(1, "%" + book_name + "%");
-			rs = (ResultSet) pstm.executeQuery();
+			rs = pstm.executeQuery();
 			while (rs.next()) {
 				Book book = new Book();
 				book.setBook_number(rs.getString("book_number"));
@@ -65,7 +64,7 @@ public class DatabaseHandlerBook {
 		try {
 			conn = JDBC_Connection.getConnection();
 			String sql_delete_books = "delete from booktable where book_number=?";
-			pstm = (PreparedStatement) conn.prepareStatement(sql_delete_books);
+			pstm = conn.prepareStatement(sql_delete_books);
 			pstm.setString(1, book_number);
 			pstm.executeUpdate();
 		} catch (SQLException e) {
@@ -84,10 +83,10 @@ public class DatabaseHandlerBook {
 		try {
 			conn = JDBC_Connection.getConnection();
 			String sql_select_booktable = "select * from booktable where book_number=?";
-			pstm = (PreparedStatement) conn
+			pstm = conn
 					.prepareStatement(sql_select_booktable);
 			pstm.setString(1, book_number);
-			rs = (ResultSet) pstm.executeQuery();
+			rs = pstm.executeQuery();
 			while (rs.next()) {
 				book = new Book();
 				book.setBook_number(rs.getString("book_number"));
@@ -120,7 +119,7 @@ public class DatabaseHandlerBook {
 		String sql_update_reader = "UPDATE booktable set book_number=? ,book_name=? ,book_author=? ,book_publishtime=? ,book_amount=? ,admin_username=? WHERE book_number=?";
 		try {
 			conn = JDBC_Connection.getConnection();
-			pstm = (PreparedStatement) conn.prepareStatement(sql_update_reader);
+			pstm = conn.prepareStatement(sql_update_reader);
 			pstm.setString(1, book.getBook_number());
 			pstm.setString(2, book.getBook_name());
 			pstm.setString(3, book.getBook_author());
@@ -152,7 +151,7 @@ public class DatabaseHandlerBook {
 		String sql_update_reader = "UPDATE booktable set book_amount=? WHERE book_number=?";
 		try {
 			conn = JDBC_Connection.getConnection();
-			pstm = (PreparedStatement) conn.prepareStatement(sql_update_reader);
+			pstm = conn.prepareStatement(sql_update_reader);
 			pstm.setInt(1, book.getBook_amount());
 			pstm.setString(2, book.getBook_number());
 			pstm.executeUpdate();// 提交数据到表中
@@ -176,7 +175,7 @@ public class DatabaseHandlerBook {
 		String sql_update_reader = "UPDATE booktable set book_amount=? WHERE book_number=?";
 		try {
 			conn = JDBC_Connection.getConnection();
-			pstm = (PreparedStatement) conn.prepareStatement(sql_update_reader);
+			pstm = conn.prepareStatement(sql_update_reader);
 			pstm.setInt(1, book.getBook_amount());
 			pstm.setString(2, book.getBook_number());
 			pstm.executeUpdate();// 提交数据到表中

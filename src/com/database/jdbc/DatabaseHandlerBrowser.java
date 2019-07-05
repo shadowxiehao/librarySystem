@@ -3,10 +3,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import com.database.bean.Browser;
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.PreparedStatement;
-import com.mysql.jdbc.ResultSet;
-
+import java.sql.*;
 /**
  * 对浏览历史表的相关查询
  * 
@@ -29,10 +26,10 @@ public class DatabaseHandlerBrowser {
 		try {
 			conn = JDBC_Connection.getConnection();
 			String sql_select_browserhistorytable = "select * from browserhistorytable where browser_reader_username=?";
-			pstm = (PreparedStatement) conn
+			pstm = conn
 					.prepareStatement(sql_select_browserhistorytable);
 			pstm.setString(1, browser_reader_username);
-			rs = (ResultSet) pstm.executeQuery();
+			rs = pstm.executeQuery();
 			while (rs.next()) {
 				Browser browser = new Browser();
 				browser.setBrowser_reader_username(rs
@@ -64,7 +61,7 @@ public class DatabaseHandlerBrowser {
 		try {
 			conn = JDBC_Connection.getConnection();
 			String sql_insert_into_browser = "INSERT INTO browserhistorytable(browser_reader_username,browser_bookname)Values(?,?)";
-			pstm = (PreparedStatement) conn
+			pstm = conn
 					.prepareStatement(sql_insert_into_browser);
 			pstm.setString(1, browser.getBrowser_reader_username());			
 			pstm.setString(2, browser.getBrowser_bookname());
