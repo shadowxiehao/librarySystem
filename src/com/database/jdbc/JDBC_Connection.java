@@ -6,13 +6,13 @@ import java.sql.*;
 
 public class JDBC_Connection {
 	static String drivername = "com.mysql.cj.jdbc.Driver";
-	static String url = "jdbc:mysql://localhost:3306/librarydb";
+	static String url = "jdbc:mysql://localhost:3306/librarydb?useSSL=false";
 	static String username = "root";
 	static String password = "xi"+"eh"+"a"+"o@7"+"9952"+"2476";
 
 	static {
 		try {
-			Class.forName(drivername);
+			Class.forName(drivername);// 注册 JDBC 驱动
 		} catch (Exception e) {
 			// TODO: handle exception
 			// System.out.println("加载驱动"+e.getMessage());
@@ -24,18 +24,16 @@ public class JDBC_Connection {
 	 * 
 	 * @return 返回连接对象
 	 */
-	public static Connection getConnection() {
+	public static Connection getConnection() {// 打开链接
 		Connection conn = null;
 		try {
-			conn = DriverManager.getConnection(url, username,
-					password);
+			conn = DriverManager.getConnection(url, username, password);
 			System.out.println("连接数据库成功");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return conn;
-
 	}
 
 	/****

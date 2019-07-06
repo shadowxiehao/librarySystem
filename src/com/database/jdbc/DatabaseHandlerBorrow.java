@@ -26,8 +26,7 @@ public class DatabaseHandlerBorrow {
 		try {
 			conn = JDBC_Connection.getConnection();
 			String sql_insert_into_borrow = "INSERT INTO borrowtable(borrow_reader_username,borrow_book_number,borrow_book_name,borrow_time)Values(?,?,?,?)";
-			pstm = conn
-					.prepareStatement(sql_insert_into_borrow);
+			pstm = conn.prepareStatement(sql_insert_into_borrow);
 			pstm.setString(1, borrow.getBorrow_reader_username());
 			pstm.setString(2, borrow.getBorrow_book_number());
 			pstm.setString(3, borrow.getBorrow_book_name());
