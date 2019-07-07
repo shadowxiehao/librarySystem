@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 /***
  * 这个用于封装系统用到的方法
- * @author wuhao
+ * @author XieHao
  *
  */
 public class UseUtil {

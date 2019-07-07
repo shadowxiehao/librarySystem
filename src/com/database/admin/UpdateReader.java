@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import com.database.bean.Reader;
+import com.database.info.Reader;
 import com.database.jdbc.DatabaseHandler;
 
 public class UpdateReader {
@@ -87,21 +87,21 @@ public class UpdateReader {
 				DatabaseHandler databaseHandler=new DatabaseHandler();
 				Reader reader=new Reader();
 				/**下面的语句改动添加final 如果出错可以改回来即可**/
-				String username1=jt_readerusername.getText().toString();
+				String username1= jt_readerusername.getText();
 				reader=databaseHandler.queryByreaderusername(username1);
 				if(reader!=null){
 					Reader reader1=new Reader();
-					reader1.setReader_username(jt_readerusername.getText().toString());
-					reader1.setReader_password(jt_readerpassword.getText().toString());
-					reader1.setReader_name(jt_readername.getText().toString());
+					reader1.setReader_username(jt_readerusername.getText());
+					reader1.setReader_password(jt_readerpassword.getText());
+					reader1.setReader_name(jt_readername.getText());
 					
-					int reader_authority=Integer.parseInt(jt_readerauthority.getText().toString());
+					int reader_authority=Integer.parseInt(jt_readerauthority.getText());
 					reader1.setAuthority(reader_authority);
 					
-					reader1.setReader_dept(jt_readerdept.getText().toString());
-					int int_borrow=Integer.parseInt(jt_readerborrowamount.getText().toString());
+					reader1.setReader_dept(jt_readerdept.getText());
+					int int_borrow=Integer.parseInt(jt_readerborrowamount.getText());
 					reader1.setReader_borrow(int_borrow);
-					reader1.setReader_degree(jt_readerdegree.getText().toString());
+					reader1.setReader_degree(jt_readerdegree.getText());
 					//databaseHandler.updateReaderTable(reader1);
 					int confirm_delete = JOptionPane.showConfirmDialog(null,
 							"确定修改？", "修改", JOptionPane.YES_NO_OPTION);

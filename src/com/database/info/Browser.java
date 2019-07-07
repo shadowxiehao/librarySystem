@@ -1,8 +1,7 @@
-package com.database.bean;
+package com.database.info;
 /**
  * 用于存储浏览历史对象
- * @author wuhao
- *
+ * @author XieHao
  */
 public class Browser {
 	private String browser_reader_username;

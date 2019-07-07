@@ -13,9 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import com.database.admin.UpdateReader;
-import com.database.bean.Book;
-import com.database.bean.Reader;
+import com.database.info.Book;
 import com.database.jdbc.DatabaseHandlerBook;
 
 public class BookMain implements ActionListener {
@@ -63,7 +61,7 @@ public class BookMain implements ActionListener {
 		if (event.equals("删除图书")) {
 			System.out.println("删除图书");
 			Book book = new Book();
-			String book_number = jt_book_search.getText().toString();
+			String book_number = jt_book_search.getText();
 			book = databaseHandlerBook.queryBookBybooknumber(book_number);
 			if (book != null) {
 
@@ -82,15 +80,15 @@ public class BookMain implements ActionListener {
 
 		} else if (event.equals("修改图书")) {
 			System.out.println("修改图书");			
-			String book_number = jt_book_search.getText().toString();
+			String book_number = jt_book_search.getText();
 			Book book= databaseHandlerBook.queryBookBybooknumber(book_number);					
 			if (book != null) {
-				String number = book.getBook_number().toString();				
-				String name = book.getBook_name().toString();
-				String  author = book.getBook_author().toString();
-				String publishtime = book.getBook_publishtime().toString();
+				String number = book.getBook_number();
+				String name = book.getBook_name();
+				String  author = book.getBook_author();
+				String publishtime = book.getBook_publishtime();
 				int amount = book.getBook_amount();
-				String admin= book.getAdmin_username().toString();
+				String admin= book.getAdmin_username();
 				UpdateBooks updataBooks = new UpdateBooks();
 				updataBooks.createUI(number, name, author, publishtime,
 						amount, admin);
@@ -102,7 +100,7 @@ public class BookMain implements ActionListener {
 		} else if (event.equals("搜索")) {
 			System.out.println("成功按下搜索键");
 			jt_show_detail.setText("");
-			String book_number = jt_book_search.getText().toString();
+			String book_number = jt_book_search.getText();
 			System.out.println(book_number);
 			Book book = databaseHandlerBook.queryBookBybooknumber(book_number);
 					

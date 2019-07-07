@@ -13,8 +13,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import com.database.bean.Book;
-import com.database.bean.Borrow;
+import com.database.info.Book;
+import com.database.info.Borrow;
 import com.database.bookmanage.BookBorrow;
 import com.database.jdbc.DatabaseHandlerBook;
 import com.database.jdbc.DatabaseHandlerBorrow;
@@ -69,7 +69,7 @@ public class BorrowOrReturn implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		String event = e.getActionCommand();
-		String book_number = jt_book_search.getText().toString();
+		String book_number = jt_book_search.getText();
 		if (event.equals("搜索")) {
 
 			System.out.println("成功按下搜索键");

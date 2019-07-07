@@ -19,6 +19,7 @@
     </schema>
     <schema id="5" parent="1" name="librarydb">
       <Current>1</Current>
+      <Visible>1</Visible>
       <Collation>utf8mb4_0900_ai_ci</Collation>
     </schema>
     <schema id="6" parent="1" name="myemployees">
@@ -1125,5 +1126,264 @@
       <Charset>utf8mb4</Charset>
       <DefaultForCharset>0</DefaultForCharset>
     </collation>
+    <table id="284" parent="5" name="admintable">
+      <Collation>utf8_general_ci</Collation>
+    </table>
+    <table id="285" parent="5" name="booktable">
+      <Collation>utf8_general_ci</Collation>
+    </table>
+    <table id="286" parent="5" name="borrowtable">
+      <Collation>utf8_general_ci</Collation>
+    </table>
+    <table id="287" parent="5" name="browserhistorytable">
+      <Collation>utf8_general_ci</Collation>
+    </table>
+    <table id="288" parent="5" name="historytable">
+      <Collation>utf8_general_ci</Collation>
+    </table>
+    <table id="289" parent="5" name="readertable">
+      <Collation>utf8_general_ci</Collation>
+    </table>
+    <table id="290" parent="5" name="returntable">
+      <Collation>utf8_general_ci</Collation>
+    </table>
+    <column id="291" parent="284" name="admin_username">
+      <Position>1</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="292" parent="284" name="admin_password">
+      <Position>2</Position>
+      <DataType>varchar(12)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="293" parent="284" name="authority">
+      <Position>3</Position>
+      <DataType>int(2)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="294" parent="284" name="admin_name">
+      <Position>4</Position>
+      <DataType>varchar(10)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="295" parent="284" name="admin_dept">
+      <Position>5</Position>
+      <DataType>varchar(10)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="296" parent="284" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>admin_username</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="297" parent="285" name="book_number">
+      <Position>1</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="298" parent="285" name="book_name">
+      <Position>2</Position>
+      <DataType>varchar(12)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="299" parent="285" name="book_author">
+      <Position>3</Position>
+      <DataType>varchar(12)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="300" parent="285" name="book_publishtime">
+      <Position>4</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="301" parent="285" name="book_amount">
+      <Position>5</Position>
+      <DataType>int(2)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="302" parent="285" name="admin_username">
+      <Position>6</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="303" parent="285" name="Iadmin_username">
+      <ColNames>admin_username</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="304" parent="285" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>book_number</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="305" parent="285" name="admin_username">
+      <ColNames>admin_username</ColNames>
+      <RefSchemaName>librarydb</RefSchemaName>
+      <RefTableName>admintable</RefTableName>
+      <RefColNames>admin_username</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="306" parent="286" name="borrow_reader_username">
+      <Position>1</Position>
+      <DataType>varchar(12)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="307" parent="286" name="borrow_book_number">
+      <Position>2</Position>
+      <DataType>varchar(12)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="308" parent="286" name="borrow_book_name">
+      <Position>3</Position>
+      <DataType>varchar(12)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="309" parent="286" name="borrow_time">
+      <Position>4</Position>
+      <DataType>varchar(30)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="310" parent="286" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>borrow_book_number</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="311" parent="287" name="browser_reader_username">
+      <Position>1</Position>
+      <DataType>varchar(12)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="312" parent="287" name="browser_bookname">
+      <Position>2</Position>
+      <DataType>varchar(30)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="313" parent="288" name="history_username">
+      <Position>1</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="314" parent="288" name="history_book_number">
+      <Position>2</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="315" parent="288" name="history_book_name">
+      <Position>3</Position>
+      <DataType>varchar(30)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="316" parent="288" name="history_borrow_time">
+      <Position>4</Position>
+      <DataType>varchar(30)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="317" parent="288" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>history_username
+history_book_number</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="318" parent="289" name="reader_username">
+      <Position>1</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="319" parent="289" name="reader_password">
+      <Position>2</Position>
+      <DataType>varchar(12)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="320" parent="289" name="reader_name">
+      <Position>3</Position>
+      <DataType>varchar(12)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="321" parent="289" name="authority">
+      <Position>4</Position>
+      <DataType>int(2)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="322" parent="289" name="reader_dept">
+      <Position>5</Position>
+      <DataType>varchar(10)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="323" parent="289" name="reader_borrow">
+      <Position>6</Position>
+      <DataType>int(2)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="324" parent="289" name="reader_degree">
+      <Position>7</Position>
+      <DataType>varchar(6)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="325" parent="289" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>reader_username</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="326" parent="290" name="reader_username">
+      <Position>1</Position>
+      <DataType>varchar(12)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="327" parent="290" name="return_time">
+      <Position>2</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="328" parent="290" name="return_money">
+      <Position>3</Position>
+      <DataType>varchar(10)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="329" parent="290" name="return_overtime">
+      <Position>4</Position>
+      <DataType>int(2)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="330" parent="290" name="borrow_time">
+      <Position>5</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="331" parent="290" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>reader_username</ColNames>
+      <Primary>1</Primary>
+    </key>
   </database-model>
 </dataSource>

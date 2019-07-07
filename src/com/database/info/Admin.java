@@ -1,10 +1,8 @@
-package com.database.bean;
+package com.database.info;
 
 /***
  * 管理员对象
- * 
- * @author wuhao
- * 
+ * @author XieHao
  */
 public class Admin {
 	private String admin_username;

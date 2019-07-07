@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import com.database.bean.Book;
+import com.database.info.Book;
 import com.database.bookmanage.BookMain;
 import com.database.jdbc.DatabaseHandlerBook;
 import com.database.main.Login;
@@ -20,7 +20,7 @@ import com.database.main.Login;
 /**
  * 这个是管理员的界面
  * 
- * @author wuhao
+ * @author XieHao
  * 
  */
 public class AdminMain implements ActionListener {
@@ -132,7 +132,7 @@ public class AdminMain implements ActionListener {
 	public void search_book_name() {
 		System.out.println("成功按下搜索键");
 		jt_admin_show_detail.setText("");
-		String bookname = jt_admin_search.getText().toString();
+		String bookname = jt_admin_search.getText();
 		System.out.println(bookname);
 		DatabaseHandlerBook databaseHandlerBook = new DatabaseHandlerBook();
 

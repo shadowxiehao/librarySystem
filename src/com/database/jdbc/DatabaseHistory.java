@@ -3,12 +3,15 @@ package com.database.jdbc;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import com.database.bean.History;
-import java.sql.*;
+import com.database.info.History;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.PreparedStatement;
+
 /**
  * 对于历史表的相关操作
  * 
- * @author wuhao
+ * @author XieHao
  * 
  */
 public class DatabaseHistory {

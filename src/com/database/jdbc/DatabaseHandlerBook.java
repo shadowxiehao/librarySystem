@@ -3,14 +3,15 @@ package com.database.jdbc;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import com.database.bean.Book;
-import java.sql.*;
-
+import com.database.info.Book;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.PreparedStatement;
 
 /**
  * 对book表进行相关操作
  * 
- * @author wuhao
+ * @author XieHao
  * 
  */
 public class DatabaseHandlerBook {
@@ -29,8 +30,7 @@ public class DatabaseHandlerBook {
 		try {
 			conn = JDBC_Connection.getConnection();
 			String sql_select_bookname = "select * from booktable where book_name LIKE ?";
-			pstm = conn
-					.prepareStatement(sql_select_bookname);
+			pstm = conn.prepareStatement(sql_select_bookname);
 			pstm.setString(1, "%" + book_name + "%");
 			rs = pstm.executeQuery();
 			while (rs.next()) {

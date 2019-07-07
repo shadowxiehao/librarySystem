@@ -1,4 +1,4 @@
-package com.database.bean;
+package com.database.info;
 
 public class Borrow {
 	private String borrow_reader_username;

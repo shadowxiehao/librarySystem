@@ -4,14 +4,15 @@ import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
-import com.database.bean.Book;
-import com.database.bean.Borrow;
-import java.sql.*;
+import com.database.info.Borrow;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.PreparedStatement;
 
 
 /***
  * 对borrow表的相关操作
- * @author wuhao
+ * @author XieHao
  *
  */
 public class DatabaseHandlerBorrow {

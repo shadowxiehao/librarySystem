@@ -10,9 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import com.database.bean.Book;
-import com.database.bean.Reader;
-import com.database.jdbc.DatabaseHandler;
+import com.database.info.Book;
 import com.database.jdbc.DatabaseHandlerBook;
 
 public class UpdateBooks {
@@ -73,17 +71,17 @@ public class UpdateBooks {
 				DatabaseHandlerBook databaseHandlerBook=new DatabaseHandlerBook();
 				Book book=new Book();
 				/**下面的语句改动添加final 如果出错可以改回来即可**/
-				String booknumber1=jt_booknumber.getText().toString();
+				String booknumber1= jt_booknumber.getText();
 				book=databaseHandlerBook.queryBookBybooknumber(booknumber1);
 				if(book!=null){
 					Book book1=new Book();
-					book1.setBook_number(jt_booknumber.getText().toString());
-					book1.setBook_name(jt_bookname.getText().toString());
-					book1.setBook_author(jt_bookauthor.getText().toString());
-					book1.setBook_publishtime(jt_bookpublishtime.getText().toString());
-					int int_amount=Integer.parseInt(jt_bookamount.getText().toString());
+					book1.setBook_number(jt_booknumber.getText());
+					book1.setBook_name(jt_bookname.getText());
+					book1.setBook_author(jt_bookauthor.getText());
+					book1.setBook_publishtime(jt_bookpublishtime.getText());
+					int int_amount=Integer.parseInt(jt_bookamount.getText());
 					book1.setBook_amount(int_amount);
-					book1.setAdmin_username(jt_bookadmin.getText().toString());
+					book1.setAdmin_username(jt_bookadmin.getText());
 					int confirm_delete = JOptionPane.showConfirmDialog(null,
 							"确定修改？", "修改", JOptionPane.YES_NO_OPTION);
 					if (confirm_delete == JOptionPane.YES_OPTION) {

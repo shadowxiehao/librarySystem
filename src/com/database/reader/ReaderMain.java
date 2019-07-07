@@ -13,16 +13,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.JTextPane;
-import javax.swing.text.JTextComponent;
 
-import com.database.admin.AdminMain;
 import com.database.admin.UpdateReader;
-import com.database.bean.Book;
-import com.database.bean.Browser;
-import com.database.bean.History;
-import com.database.bean.Reader;
-import com.database.bookmanage.BookMain;
+import com.database.info.Book;
+import com.database.info.Browser;
+import com.database.info.History;
+import com.database.info.Reader;
 import com.database.jdbc.DatabaseHandler;
 import com.database.jdbc.DatabaseHandlerBook;
 import com.database.jdbc.DatabaseHandlerBrowser;
@@ -32,7 +28,7 @@ import com.database.main.Login;
 /***
  * 这个是读者的界面
  * 
- * @author wuhao
+ * @author XieHao
  * 
  */
 public class ReaderMain implements ActionListener {
@@ -110,19 +106,19 @@ public class ReaderMain implements ActionListener {
 		} else if (event.equals("检索历史")) {
 			search_history();
 		} else if (event.equals("修改信息")) {
-			String str_reader_username=jt_reader_username.getText().toString();
+			String str_reader_username= jt_reader_username.getText();
 			//String reader_username = jt_reader_search.getText().toString();
 			DatabaseHandler databaseHandler=new DatabaseHandler();
 			Reader reader = databaseHandler
 					.queryByreaderusername(str_reader_username);
 			if (reader != null) {
-				String username = reader.getReader_username().toString();
-				String password = reader.getReader_password().toString();
-				String name = reader.getReader_name().toString();
+				String username = reader.getReader_username();
+				String password = reader.getReader_password();
+				String name = reader.getReader_name();
 				int authority = reader.getAuthority();
-				String dept = reader.getReader_dept().toString();
+				String dept = reader.getReader_dept();
 				int borrow = reader.getReader_borrow();
-				String degree = reader.getReader_degree().toString();
+				String degree = reader.getReader_degree();
 				UpdateReader updateReader = new UpdateReader();
 				updateReader.createUI(username, password, name, authority,
 						dept, borrow, degree);
@@ -139,7 +135,7 @@ public class ReaderMain implements ActionListener {
 	public void search_book_name() {
 		System.out.println("成功按下搜索键");
 		jt_show_detail.setText("");
-		String bookname = jt_search.getText().toString();
+		String bookname = jt_search.getText();
 		System.out.println(bookname);
 		DatabaseHandlerBook databaseHandlerBook = new DatabaseHandlerBook();
 		List<Book> book = databaseHandlerBook.queryBook(bookname);
@@ -164,7 +160,7 @@ public class ReaderMain implements ActionListener {
 					JOptionPane.ERROR_MESSAGE);
 		}
 		/**** 将搜索的书名存入browser表中 *********/
-		String jt_reader_username1 = jt_reader_username.getText().toString();
+		String jt_reader_username1 = jt_reader_username.getText();
 		DatabaseHandlerBrowser databaseHandlerBrowser = new DatabaseHandlerBrowser();
 		Browser browser = new Browser();
 		browser.setBrowser_bookname(bookname);
@@ -176,7 +172,7 @@ public class ReaderMain implements ActionListener {
 	 * 搜索并显示已经借到的书本
 	 */
 	public void search_borrow_history() {
-		String readerusername = jt_reader_username.getText().toString();
+		String readerusername = jt_reader_username.getText();
 		System.out.println(readerusername);
 		jt_show_detail.setText("");
 		DatabaseHistory databaseHistory = new DatabaseHistory();
@@ -205,7 +201,7 @@ public class ReaderMain implements ActionListener {
 	 * 搜索历史
 	 */
 	public void search_history() {
-		String readerusername = jt_reader_username.getText().toString();
+		String readerusername = jt_reader_username.getText();
 
 		jt_show_detail.setText("");
 		DatabaseHandlerBrowser databaseHandlerBrowser = new DatabaseHandlerBrowser();

@@ -1,8 +1,7 @@
-package com.database.bean;
+package com.database.info;
 /***
  *读者的对象
- * @author wuhao
- *
+ * @author XieHao
  */
 public class Reader {
 	private String reader_username;

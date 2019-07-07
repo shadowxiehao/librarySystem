@@ -2,8 +2,14 @@ package com.database.jdbc;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.PreparedStatement;
+import java.sql.Statement;
 
+/*
+* 用来处理连接的建立与销毁
+*/
 public class JDBC_Connection {
 	static String drivername = "com.mysql.cj.jdbc.Driver";
 	static String url = "jdbc:mysql://localhost:3306/librarydb?useSSL=false";

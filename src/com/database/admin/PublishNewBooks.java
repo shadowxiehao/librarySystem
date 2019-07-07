@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 
 import javax.swing.JTextField;
 
-import com.database.bean.Book;
+import com.database.info.Book;
 import com.database.jdbc.DatabaseHandler;
 
 public class PublishNewBooks {
@@ -77,13 +77,12 @@ public class PublishNewBooks {
 					// 执行插入数据库语句
 					DatabaseHandler databaseHandler = new DatabaseHandler();
 					Book book = new Book();
-					book.setBook_name(jt_bookname.getText().toString().trim());
-					book.setBook_number(jt_booknumber.getText().toString()
+					book.setBook_name(jt_bookname.getText().trim());
+					book.setBook_number(jt_booknumber.getText()
 							.trim());
-					book.setBook_author(jt_bookauthor.getText().toString()
+					book.setBook_author(jt_bookauthor.getText()
 							.trim());
-					book.setBook_publishtime(jt_bookpublishtime.getText()
-							.toString());
+					book.setBook_publishtime(jt_bookpublishtime.getText());
 					// 将string 转换成int
 					String amount = jt_bookamount.getText();
 					int bookamount = Integer.parseInt(amount);

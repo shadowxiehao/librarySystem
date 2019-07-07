@@ -2,12 +2,15 @@ package com.database.jdbc;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import com.database.bean.Browser;
-import java.sql.*;
+import com.database.info.Browser;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.PreparedStatement;
+
 /**
  * 对浏览历史表的相关查询
  * 
- * @author wuhao
+ * @author XieHao
  * 
  */
 public class DatabaseHandlerBrowser {

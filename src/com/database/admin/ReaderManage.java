@@ -14,8 +14,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import com.database.bean.History;
-import com.database.bean.Reader;
+import com.database.info.History;
+import com.database.info.Reader;
 import com.database.jdbc.DatabaseHandler;
 import com.database.jdbc.DatabaseHistory;
 
@@ -78,7 +78,7 @@ public class ReaderManage implements ActionListener {
 		String event = e.getActionCommand();
 		if (event.equals("搜索")) {
 			System.out.println("成功按下搜索键");
-			String reader_username = jt_reader_search.getText().toString();
+			String reader_username = jt_reader_search.getText();
 			System.out.println(reader_username);
 			Reader reader = databaseHandler
 					.queryByreaderusername(reader_username);
@@ -107,18 +107,18 @@ public class ReaderManage implements ActionListener {
 			addReader.createUI();
 
 		} else if (event.equals("修改信息")) {
-			String reader_username = jt_reader_search.getText().toString();
+			String reader_username = jt_reader_search.getText();
 
 			Reader reader = databaseHandler
 					.queryByreaderusername(reader_username);
 			if (reader != null) {
-				String username = reader.getReader_username().toString();
-				String password = reader.getReader_password().toString();
-				String name = reader.getReader_name().toString();
+				String username = reader.getReader_username();
+				String password = reader.getReader_password();
+				String name = reader.getReader_name();
 				int authority = reader.getAuthority();
-				String dept = reader.getReader_dept().toString();
+				String dept = reader.getReader_dept();
 				int borrow = reader.getReader_borrow();
-				String degree = reader.getReader_degree().toString();
+				String degree = reader.getReader_degree();
 				UpdateReader updateReader = new UpdateReader();
 				updateReader.createUI(username, password, name, authority,
 						dept, borrow, degree);
@@ -128,7 +128,7 @@ public class ReaderManage implements ActionListener {
 
 		} else if (event.equals("删除读者")) {
 			Reader reader = new Reader();
-			String reader_username = jt_reader_search.getText().toString();
+			String reader_username = jt_reader_search.getText();
 			reader = databaseHandler.queryByreaderusername(reader_username);
 			if (reader != null) {
 
@@ -150,7 +150,7 @@ public class ReaderManage implements ActionListener {
 
 	}
 	public void reader_borrow_history(){
-		String readerusername = jt_reader_search.getText().toString();
+		String readerusername = jt_reader_search.getText();
 		System.out.println(readerusername);
 		jt_show_detail.setText("");
 		DatabaseHistory databaseHistory = new DatabaseHistory();

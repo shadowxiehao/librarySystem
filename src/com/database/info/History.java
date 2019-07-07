@@ -1,10 +1,9 @@
-package com.database.bean;
+package com.database.info;
 
 /**
  * 用于存储个人的借书历史
  * 
- * @author wuhao
- * 
+ * @author XieHao
  */
 public class History {
 	private String history_username;
@@ -42,6 +41,6 @@ public class History {
 
 	public void setHistory_borrow_time(String history_borrow_time) {
 		this.history_borrow_time = history_borrow_time;
-	};
+	}
 
 }

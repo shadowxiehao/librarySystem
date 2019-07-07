@@ -10,8 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import com.database.bean.Book;
-import com.database.bean.Reader;
+import com.database.info.Reader;
 import com.database.jdbc.DatabaseHandler;
 
 public class AddReader {
@@ -86,10 +85,10 @@ public class AddReader {
 					// 执行插入数据库语句
 					DatabaseHandler databaseHandler = new DatabaseHandler();
 					Reader reader = new Reader();
-					reader.setReader_username(jt_readerusername.getText().toString().trim());
-					reader.setReader_password(jt_readerpassword.getText().toString()
+					reader.setReader_username(jt_readerusername.getText().trim());
+					reader.setReader_password(jt_readerpassword.getText()
 							.trim());
-					reader.setReader_name(jt_readername.getText().toString()
+					reader.setReader_name(jt_readername.getText()
 							.trim());
 					// 将string 转换成int
 					String str_authority = jt_readerauthority.getText();

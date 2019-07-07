@@ -1,7 +1,7 @@
-package com.database.bean;
+package com.database.info;
 /**
- * 书本的bean对象
- * @author wuhao
+ * 书本的info对象
+ * @author xiehao
  *
  */
 public class Book {

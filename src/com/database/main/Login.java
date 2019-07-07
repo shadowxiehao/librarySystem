@@ -13,8 +13,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import com.database.admin.AdminMain;
-import com.database.bean.Admin;
-import com.database.bean.Reader;
+import com.database.info.Admin;
+import com.database.info.Reader;
 import com.database.jdbc.DatabaseHandler;
 import com.database.jdbc.DatabaseHandlerAdmin;
 import com.database.reader.ReaderMain;
@@ -22,7 +22,7 @@ import com.database.reader.ReaderMain;
 /***
  * 创建登陆注册界面
  * 
- * @author wuhao
+ * @author XieHao
  * 
  */
 public class Login {

@@ -7,14 +7,11 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import com.database.bean.Book;
-import com.database.bean.Borrow;
-import com.database.bean.History;
-import com.database.bean.Reader;
-import com.database.jdbc.DatabaseHandler;
+import com.database.info.Book;
+import com.database.info.Borrow;
+import com.database.info.History;
 import com.database.jdbc.DatabaseHandlerBook;
 import com.database.jdbc.DatabaseHandlerBorrow;
 import com.database.jdbc.DatabaseHistory;
@@ -62,26 +59,20 @@ public class BookBorrow {
 		jb_confirm.addActionListener(new ActionListener() {
 
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) {//借书动作
 				// TODO Auto-generated method stub
 				DatabaseHandlerBorrow databaseHandlerBorrow = new DatabaseHandlerBorrow();
 				Borrow borrow = new Borrow();
-				borrow.setBorrow_book_number(jt_borrow_booknumber.getText()
-						.toString().trim());
-				borrow.setBorrow_book_name(jt_borrow_bookname.getText()
-						.toString().trim());
-				borrow.setBorrow_reader_username(jt_borrow_readerusername
-						.getText().toString().trim());
+				borrow.setBorrow_book_number(jt_borrow_booknumber.getText().trim());
+				borrow.setBorrow_book_name(jt_borrow_bookname.getText().trim());
+				borrow.setBorrow_reader_username(jt_borrow_readerusername.getText().trim());
 				borrow.setBorrow_time(jt_borrow_time.getText());
 				
 				DatabaseHistory databaseHistory = new DatabaseHistory();
 				History history = new History();
-				history.setHistory_username(jt_borrow_readerusername.getText()
-						.toString().trim());
-				history.setHistory_book_number(jt_borrow_booknumber.getText()
-						.toString().trim());
-				history.setHistory_book_name(jt_borrow_bookname
-						.getText().toString().trim());
+				history.setHistory_username(jt_borrow_readerusername.getText().trim());
+				history.setHistory_book_number(jt_borrow_booknumber.getText().trim());
+				history.setHistory_book_name(jt_borrow_bookname.getText().trim());
 				history.setHistory_borrow_time(jt_borrow_time.getText());
 				
 				//插入到借书表中
@@ -89,7 +80,7 @@ public class BookBorrow {
 				//插入到个人借书历史表中，以便于以后查询个人的借书历史
 				databaseHistory.insert_into_historytable(history);
 				/****** 插入成功后将book表中对应的存存量修改为0 *******/
-				String book_number=jt_borrow_booknumber.getText().toString();
+				String book_number= jt_borrow_booknumber.getText();
 				RefreshBookAmount(book_number);
 				jframe.dispose();
 
