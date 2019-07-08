@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="91c53103-a57e-4005-9e46-5d57fe120abb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/com/database/bookmanage/BookBorrow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/database/bookmanage/BookBorrow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/database/jdbc/BackupOrRecover.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/database/admin/AdminMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/database/admin/AdminMain.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/bin/" />
@@ -60,20 +62,44 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/database/bookmanage/BookBorrow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="135" column="54" lean-forward="true" selection-start-line="135" selection-start-column="54" selection-end-line="135" selection-end-column="54" />
+            <state relative-caret-position="135">
+              <caret line="24" column="73" lean-forward="true" selection-start-line="24" selection-start-column="73" selection-end-line="24" selection-end-column="73" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/database/jdbc/DatabaseHistory.java">
+        <entry file="file://$PROJECT_DIR$/src/com/database/jdbc/BackupOrRecover.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="244">
-              <caret line="36" column="39" lean-forward="true" selection-start-line="36" selection-start-column="39" selection-end-line="36" selection-end-column="39" />
+            <state relative-caret-position="300">
+              <caret line="44" column="28" lean-forward="true" selection-start-line="44" selection-start-column="28" selection-end-line="44" selection-end-column="28" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/database/admin/AdminMain.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="186">
+              <caret line="208" column="43" lean-forward="true" selection-start-line="208" selection-start-column="43" selection-end-line="208" selection-end-column="43" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/database/main/Login.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="158">
+              <caret line="108" column="38" selection-start-line="108" selection-start-column="38" selection-end-line="108" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -118,18 +144,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/database/admin/AdminMain.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="81">
-              <caret line="191" selection-start-line="191" selection-end-line="192" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/database/util/ResultPanel.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="270">
@@ -137,15 +151,6 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/database/info/Borrow.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="32" selection-start-line="32" selection-end-line="38" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -173,7 +178,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>jframe</find>
       <find>jf_admin</find>
       <find>jt_welcome</find>
       <find>jt_admin_space</find>
@@ -192,17 +196,18 @@
       <find>browserhistorytable</find>
       <find>list_browser</find>
       <find>browser</find>
-      <find>book_number</find>
       <find>Browser</find>
       <find>借</find>
       <find>jt_admin_show_detail</find>
       <find>jt_reader_username1</find>
-      <find>search_book_name</find>
       <find>jt_reader_username</find>
       <find>出借</find>
       <find>已借书本</find>
       <find>history</find>
       <find>TODO</find>
+      <find>search_book_name</find>
+      <find>book_number</find>
+      <find>jb_admin_reader_manage</find>
     </findStrings>
     <replaceStrings>
       <replace>@author XieHao</replace>
@@ -214,8 +219,8 @@
       <replace>jf_admin</replace>
       <replace>jf_reader</replace>
       <replace>jframe</replace>
-      <replace>jf_book</replace>
       <replace>browser</replace>
+      <replace>jf_book</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -249,12 +254,13 @@
         <option value="$PROJECT_DIR$/src/com/database/jdbc/DatabaseHandlerBrowser.java" />
         <option value="$PROJECT_DIR$/src/com/database/jdbc/DatabaseHandlerBorrow.java" />
         <option value="$PROJECT_DIR$/src/com/database/jdbc/DatabaseHandlerBook.java" />
-        <option value="$PROJECT_DIR$/src/com/database/admin/AdminMain.java" />
         <option value="$PROJECT_DIR$/src/com/database/admin/ReaderManage.java" />
         <option value="$PROJECT_DIR$/src/com/database/bookmanage/BookMain.java" />
         <option value="$PROJECT_DIR$/src/com/database/admin/BorrowOrReturn.java" />
         <option value="$PROJECT_DIR$/src/com/database/reader/ReaderMain.java" />
         <option value="$PROJECT_DIR$/src/com/database/bookmanage/BookBorrow.java" />
+        <option value="$PROJECT_DIR$/src/com/database/jdbc/BackupOrRecover.java" />
+        <option value="$PROJECT_DIR$/src/com/database/admin/AdminMain.java" />
       </list>
     </option>
   </component>
@@ -302,20 +308,6 @@
               <item name="librarySystem" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="bookmanage" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="librarySystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="librarySystem" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="info" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="librarySystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="librarySystem" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
               <item name="jdbc" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -324,20 +316,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="database" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="librarySystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="librarySystem" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="reader" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="librarySystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="librarySystem" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="librarySystem" type="b2602c69:ProjectViewProjectNode" />
@@ -412,7 +390,7 @@
       <option name="presentableId" value="Default" />
       <updated>1562162188590</updated>
       <workItem from="1562162224260" duration="33644000" />
-      <workItem from="1562417089191" duration="69771000" />
+      <workItem from="1562417089191" duration="76468000" />
     </task>
     <task id="LOCAL-00001" summary="2019.7.5 16:22 &#10;图书馆数据库管理系统&#10;第一次提交&#10;准备进行驱动的修改 以便让其正常使用">
       <created>1562314997554</created>
@@ -477,17 +455,24 @@
       <option name="project" value="LOCAL" />
       <updated>1562578905057</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="2019.7.8 17:51&#10;添加了数据库对应的库的sql语句文件,&#10;然后,直接在MYSQL导入就可以生成对应数据库结构和数据啦&#10;(PS:差不多接近尾声了,要交给后人了,呜呜呜,算了,赶报告去了)">
+      <created>1562579666852</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1562579666853</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="103415000" />
+    <option name="totallyTimeSpent" value="110112000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1488" height="878" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2646648" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2646648" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -496,7 +481,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32933334" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.474162" visible="true" weight="0.32933334" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4706704" visible="true" weight="0.32933334" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -505,8 +490,8 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32933334" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.525838" side_tool="true" visible="true" weight="0.32933334" />
-      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.47486034" weight="0.32933334" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5293296" side_tool="true" visible="true" weight="0.32933334" />
+      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.4713687" weight="0.32933334" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -532,7 +517,8 @@
     <MESSAGE value="2019.7.8 14:19&#10;增加了对borrowtable的触发器,当borrowtable书被归还所以删除时,returntable会自动增添相关信息与计算费用等&#10;补充了部分字段等" />
     <MESSAGE value="2019.7.8 15:56&#10;增加了管理员界面对书序号搜索的支持(运用union)&#10;增加了管理员界面表格化显示,并使其更友好化&#10;(time is running out, 我不知道还能改多少了, 估计要再改改就赶报告了,嘤嘤嘤)" />
     <MESSAGE value="2019.7.8 17:39&#10;又添加了几处表格附友好化显示&#10;(PS:啊啊啊,图形界面,我只是一个想单单纯纯写数据库的好少年啊)" />
-    <option name="LAST_COMMIT_MESSAGE" value="2019.7.8 17:39&#10;又添加了几处表格附友好化显示&#10;(PS:啊啊啊,图形界面,我只是一个想单单纯纯写数据库的好少年啊)" />
+    <MESSAGE value="2019.7.8 17:51&#10;添加了数据库对应的库的sql语句文件,&#10;然后,直接在MYSQL导入就可以生成对应数据库结构和数据啦&#10;(PS:差不多接近尾声了,要交给后人了,呜呜呜,算了,赶报告去了)" />
+    <option name="LAST_COMMIT_MESSAGE" value="2019.7.8 17:51&#10;添加了数据库对应的库的sql语句文件,&#10;然后,直接在MYSQL导入就可以生成对应数据库结构和数据啦&#10;(PS:差不多接近尾声了,要交给后人了,呜呜呜,算了,赶报告去了)" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/librarySystem.iml">
@@ -624,13 +610,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/database/main/Database_main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/database/util/ImageLabel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -645,18 +624,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" column="36" lean-forward="true" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/database/main/Login.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="52" column="76" lean-forward="true" selection-start-line="52" selection-start-column="76" selection-end-line="52" selection-end-column="76" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1425#1579#0" expanded="true" />
-            <element signature="e#1578#1579#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -678,17 +645,6 @@
           <folding>
             <element signature="e#1341#1528#0" expanded="true" />
             <element signature="e#1527#1528#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/database/admin/AddReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
-          <folding>
-            <element signature="e#1339#1526#0" expanded="true" />
-            <element signature="e#1525#1526#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -807,16 +763,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/database/admin/AdminMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="191" selection-start-line="191" selection-end-line="192" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/database/reader/ReaderMain.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -827,10 +773,54 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/database/main/Database_main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="40" lean-forward="true" selection-start-line="3" selection-start-column="40" selection-end-line="3" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/database/admin/AddReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="26" column="50" lean-forward="true" selection-start-line="26" selection-start-column="50" selection-end-line="26" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/database/main/Login.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="108" column="38" selection-start-line="108" selection-start-column="38" selection-end-line="108" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/database/bookmanage/BookBorrow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="135" column="54" lean-forward="true" selection-start-line="135" selection-start-column="54" selection-end-line="135" selection-end-column="54" />
+        <state relative-caret-position="135">
+          <caret line="24" column="73" lean-forward="true" selection-start-line="24" selection-start-column="73" selection-end-line="24" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/database/jdbc/BackupOrRecover.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="44" column="28" lean-forward="true" selection-start-line="44" selection-start-column="28" selection-end-line="44" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/database/admin/AdminMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="208" column="43" lean-forward="true" selection-start-line="208" selection-start-column="43" selection-end-line="208" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

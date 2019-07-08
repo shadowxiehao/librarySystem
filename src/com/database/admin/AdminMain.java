@@ -15,7 +15,7 @@ import com.database.bookmanage.BookMain;
 import com.database.jdbc.DatabaseHandlerBook;
 import com.database.main.Login;
 import com.database.util.ImageLabel;//构造背景图用
-
+import com.database.jdbc.BackupOrRecover;//备份与恢复
 
 /**
  * 这个是管理员的界面
@@ -26,7 +26,7 @@ public class AdminMain implements ActionListener {
     JFrame jf_admin;
     JButton jb_admin_search, jb_admin_exit, jb_admin_borrow,
             jb_admin_reader_manage, jb_admin_book_manager,
-            jb_admin_publish_newbook;
+            jb_admin_publish_newbook, jb_admin_backup_manage, jb_admin_recover_manage;
     //private JTextArea jt_admin_show_detail;
     private JTable table = new JTable();//显示结果的表格
     private DefaultTableModel mm = null;//表默认格式
@@ -122,11 +122,15 @@ public class AdminMain implements ActionListener {
         jb_admin_publish_newbook = new JButton("发布新书");
         jb_admin_book_manager = new JButton("图书管理");
         jb_admin_reader_manage = new JButton("读者管理");
+        jb_admin_backup_manage = new JButton("数据备份");
+        jb_admin_recover_manage = new JButton("数据恢复");
 
         jp_admin_function.add(jb_admin_borrow);
         jp_admin_function.add(jb_admin_publish_newbook);
         jp_admin_function.add(jb_admin_book_manager);
         jp_admin_function.add(jb_admin_reader_manage);
+        jp_admin_function.add(jb_admin_backup_manage);
+        jp_admin_function.add(jb_admin_recover_manage);
 
         jp_admin_function.setOpaque(false);
         jf_admin.add(jp_admin_function, BorderLayout.WEST);
@@ -145,7 +149,9 @@ public class AdminMain implements ActionListener {
         jb_admin_publish_newbook.addActionListener(this);
         // 修改图书信息
         jb_admin_reader_manage.addActionListener(this);// 读者信息管理
-
+        //备份与恢复
+        jb_admin_backup_manage.addActionListener(this);//备份
+        jb_admin_recover_manage.addActionListener(this);//恢复
     }
 
     @Override
@@ -180,6 +186,36 @@ public class AdminMain implements ActionListener {
             System.out.println("search7");
             ReaderManage readerManage = new ReaderManage();
             readerManage.createUI();
+        } else if (event.equals("数据备份")) {
+            boolean TureOrFalse = false;
+            String backup_path = JOptionPane.showInputDialog("请输入文件保存地址:");//s就是得到弹出框输入的信息
+            if (backup_path.trim().equals("")) {
+            } else {
+                System.out.println("启动备份");
+                TureOrFalse = BackupOrRecover.backup(backup_path);
+                if (TureOrFalse == true) {
+                    JOptionPane.showMessageDialog(null, "备份完成喽!", "成功",
+                            JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "备份失败,试试修改路径之类的!", "错误",
+                            JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        } else if (event.equals("数据恢复")) {
+            boolean TureOrFalse = false;
+            String recover_path = JOptionPane.showInputDialog("请输入文件保存地址:");//s就是得到弹出框输入的信息
+            if (recover_path.trim().equals("")) {
+            } else {
+                System.out.println("开始恢复");
+                TureOrFalse = BackupOrRecover.recover(recover_path);
+                if (TureOrFalse == true) {
+                    JOptionPane.showMessageDialog(null, "恢复完成!", "成功",
+                            JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "恢复失败,试试输入完整路径名等!", "错误",
+                            JOptionPane.ERROR_MESSAGE);
+                }
+            }
         }
 
     }
