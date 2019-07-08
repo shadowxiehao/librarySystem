@@ -21,6 +21,7 @@ import com.database.jdbc.DatabaseHistory;
 import com.database.main.Login;
 import com.database.util.ImageLabel;//构造背景图用
 import com.database.util.ResultPanel;//搜索结果用
+import com.database.util.UseUtil;
 
 /***
  * 这个是读者的界面
@@ -197,6 +198,7 @@ public class ReaderMain implements ActionListener {
 		Browser browser = new Browser();
 		browser.setBrowser_bookname(bookname);
 		browser.setBrowser_reader_username(jt_reader_username1);
+		browser.setBorrow_time(UseUtil.GetTime());
 		databaseHandlerBrowser.insert_into_browsertable(browser);
 	}
 
@@ -239,14 +241,14 @@ public class ReaderMain implements ActionListener {
 		DatabaseHandlerBrowser databaseHandlerBrowser = new DatabaseHandlerBrowser();
 		List<Browser> browser = databaseHandlerBrowser
 				.QueryBrowserTable(readerusername);
-		jt_show_detail.append("读者号\t" + "书名\t " );
+		jt_show_detail.append("读者号\t" + "书名\t "+"日期\t " );
 		if (browser != null) {
 
 			jt_show_detail.append("\n");
 			for (int i = 0; i < browser.size(); i++) {
-				jt_show_detail.append(browser.get(i)
-						.getBrowser_reader_username()+ "\t"
-						+ browser.get(i).getBrowser_bookname() + "\t");
+				jt_show_detail.append(browser.get(i).getBrowser_reader_username()+ "\t"
+						+ browser.get(i).getBrowser_bookname() + "\t"+
+						browser.get(i).getBorrow_time()+"\t");
 				jt_show_detail.append("\n");
 			}
 

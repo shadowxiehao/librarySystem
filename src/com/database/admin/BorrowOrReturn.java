@@ -202,7 +202,7 @@ public class BorrowOrReturn implements ActionListener {
 			/*****以下用于计算是否欠费***********/
 			UseUtil useutil = new UseUtil();
 			SimpleDateFormat format =new  SimpleDateFormat("yyyy-MM-dd");   
-			String str_return_time = (useutil.GetTime());		
+			String str_return_time = (UseUtil.GetTime());
 			String str_borrow_time=borrow.getBorrow_time();
 			//借下来用于剖析日期
 			try{
@@ -212,7 +212,8 @@ public class BorrowOrReturn implements ActionListener {
 			day= (endDay.getTime()-startDay.getTime())/(24*60*60*1000);
 			}catch(Exception e){
 				e.printStackTrace();
-			}			
+			}
+			//默认30天即为超时
 			if(day>30){
 				String money_pay=(day-30)*0.1+"元";
 				jt_show_detail.append("\n");
@@ -236,7 +237,7 @@ public class BorrowOrReturn implements ActionListener {
 			}
 
 		} else {
-			JOptionPane.showMessageDialog(null, "图书还没有出借", "错误",
+			JOptionPane.showMessageDialog(null, "图书还没有出借此人", "错误",
 					JOptionPane.ERROR_MESSAGE);
 		}
 	}
