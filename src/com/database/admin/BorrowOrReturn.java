@@ -1,23 +1,20 @@
 package com.database.admin;
 
-import java.awt.BorderLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
+import javax.swing.*;
+
 import com.database.info.Book;
 import com.database.info.Borrow;
 import com.database.bookmanage.BookBorrow;
 import com.database.jdbc.DatabaseHandlerBook;
 import com.database.jdbc.DatabaseHandlerBorrow;
+import com.database.util.ImageLabel;
 import com.database.util.UseUtil;
 
 public class BorrowOrReturn implements ActionListener {
@@ -30,6 +27,32 @@ public class BorrowOrReturn implements ActionListener {
 		JFrame jf_reader = new JFrame("图书出借/归还");
 		jf_reader.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);// 安全退出
 		jf_reader.setLayout(new BorderLayout());// 设置BorderLayout布局
+
+		//设置刚开始显示的大小
+		Dimension dimension = new Dimension(650,400);
+		jf_reader.setMinimumSize(dimension);
+
+		//设置窗口图标
+		ImageIcon imageIcon = new ImageIcon("src\\com\\database\\util\\c.jpg");// 这是图标 .png .jpg .gif 等格式的图片都可以
+		jf_reader.setIconImage(imageIcon.getImage());
+
+		//背景图片
+		try {
+			Image image = new ImageIcon("src\\com\\database\\util\\b.png").getImage();// 这是背景图片 .png .jpg .gif 等格式的图片都可以
+			JLabel imgLabel = new ImageLabel(image,jf_reader);// 将背景图放在"标签"里。
+			jf_reader.getLayeredPane().add(imgLabel, new Integer(Integer.MIN_VALUE));// 注意这里是关键，将背景标签添加到jfram的LayeredPane面板里。
+			Container cp = jf_reader.getContentPane();
+			((JPanel) cp).setOpaque(false); // 注意这里，将内容面板设为透明。这样LayeredPane面板中的背景才能显示出来。
+			imgLabel.setBounds(0, 0, jf_reader.getWidth(), jf_reader.getHeight());// 设置背景标签的位置
+
+			jf_reader.addComponentListener(new ComponentAdapter(){//监听窗口大小改变,然后改变jlabel大小
+				@Override public void componentResized(ComponentEvent e){
+					imgLabel.setSize(jf_reader.getWidth(), jf_reader.getHeight());
+				}});
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+
 		/***** 以下部分就是界面的第一个功能面板 ****/
 		JPanel jp_title = new JPanel();
 		JLabel jl = new JLabel("图书书号");
@@ -39,10 +62,12 @@ public class BorrowOrReturn implements ActionListener {
 		jp_title.add(jt_book_search);// 搜索条
 		jp_title.add(jb_book_search);// 确定搜索键
 		// 退出键
+		jp_title.setOpaque(false);//透明
 		jf_reader.add(jp_title, BorderLayout.NORTH);// 设置布局在最上面
 		// 一下是搜索后显示的内容
 		jt_show_detail = new JTextArea();
 		jt_show_detail.setEditable(false);
+		jt_show_detail.setOpaque(false);//透明
 		jf_reader.add(jt_show_detail, BorderLayout.CENTER);
 		// 读者界面的主要功能
 		JPanel jp_function = new JPanel();
@@ -54,6 +79,7 @@ public class BorrowOrReturn implements ActionListener {
 		jp_function.add(jb_borrow);
 		jp_function.add(jb_return);
 		//jp_function.add(jb_owemoney);//欠费管理先设置不可见，待以后完善
+		jp_function.setOpaque(false);//透明
 		jf_reader.add(jp_function, BorderLayout.EAST);
 		jf_reader.setVisible(true);
 		jf_reader.setSize(650, 400);
@@ -104,9 +130,9 @@ public class BorrowOrReturn implements ActionListener {
 				int bookamount = book.getBook_amount();
 				if (bookamount > 0) {
 					BookBorrow bookBorrow = new BookBorrow();
-					bookBorrow.CreatUI(booknumber, bookname);
+					bookBorrow.CreatUI(booknumber, bookname,bookamount);
 				} else {
-					JOptionPane.showMessageDialog(null, "书本已经出借", "错误",
+					JOptionPane.showMessageDialog(null, "书本已经全部出借", "错误",
 							JOptionPane.ERROR_MESSAGE);
 				}
 
@@ -120,9 +146,10 @@ public class BorrowOrReturn implements ActionListener {
 			 * BookBorrow bookBorrow = new BookBorrow(); bookBorrow.CreatUI();
 			 */
 		} else if (event.equals("图书归还")) {
-			searchAndShowBorrowInfo(book_number);
+			String borrwow_name=JOptionPane.showInputDialog("请输入归还的用户名:");//borrwow_name就是得到弹出框输入的信息
+			searchAndShowBorrowInfo(book_number,borrwow_name);
 
-		} else if (event.equals("欠费管理")) {
+		} else if (event.equals("欠费管理")) {//没时间做了,嘤嘤嘤
 
 		}
 	}
@@ -160,11 +187,11 @@ public class BorrowOrReturn implements ActionListener {
 	 * @param book_number
 	 *            归还的图书号
 	 */
-	public void searchAndShowBorrowInfo(String book_number) {
+	public void searchAndShowBorrowInfo(String book_number,String borrwow_name) {
 		long day=0;//用于计算超过的时间
 		jt_show_detail.setText("");
 		//检查对应的书本号码是否已经借出
-		Borrow borrow = databaseHandlerBorrow.QueryBorrowTable(book_number);
+		Borrow borrow = databaseHandlerBorrow.QueryBorrowTable(book_number,borrwow_name);
 		jt_show_detail.append("图书号\t " + "书名\t " + "借阅者\t " + "出借时间\t ");
 		if (borrow != null) {
 			jt_show_detail.append("\n");
@@ -202,8 +229,8 @@ public class BorrowOrReturn implements ActionListener {
 					"确定归还？", "归还图书", JOptionPane.YES_NO_OPTION);
 			if (confirm_delete == JOptionPane.YES_OPTION) {
 				System.out.println("确定归还");				
-				databaseHandlerBorrow.DeleteBorrow(book_number);
-				RefreshBookAmounToOne(book_number);
+				databaseHandlerBorrow.DeleteBorrow(book_number,borrwow_name);
+				RefreshBookAmounToNum(book_number);
 				JOptionPane.showMessageDialog(null, "成功归还", "成功",
 						JOptionPane.INFORMATION_MESSAGE);
 			}
@@ -214,13 +241,16 @@ public class BorrowOrReturn implements ActionListener {
 		}
 	}
 	/**
-	 * 将书本库存量设置为1
+	 * 将书本库存量设置为n+1
 	 * @param book_number
 	 */
-	public void RefreshBookAmounToOne(String book_number) {
+	public void RefreshBookAmounToNum(String book_number) {
 		// TODO Auto-generated method stub
+		//记录当前书剩余数量
+		Book book = databaseHandlerBook.queryBookBybooknumber(book_number);
+
 		Book book1 = new Book();
-		book1.setBook_amount(1);
+		book1.setBook_amount(book.getBook_amount()+1);
 		book1.setBook_number(book_number);
 		databaseHandlerBook.updateBookToSetOne(book1);
 	}

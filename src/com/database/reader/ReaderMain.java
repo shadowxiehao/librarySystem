@@ -1,18 +1,13 @@
 package com.database.reader;
 
-import java.awt.BorderLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.util.List;
 
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 import com.database.admin.UpdateReader;
 import com.database.info.Book;
@@ -24,6 +19,8 @@ import com.database.jdbc.DatabaseHandlerBook;
 import com.database.jdbc.DatabaseHandlerBrowser;
 import com.database.jdbc.DatabaseHistory;
 import com.database.main.Login;
+import com.database.util.ImageLabel;//构造背景图用
+import com.database.util.ResultPanel;//搜索结果用
 
 /***
  * 这个是读者的界面
@@ -41,6 +38,32 @@ public class ReaderMain implements ActionListener {
 		jf_reader = new JFrame("读者登录");
 		jf_reader.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// 安全退出
 		jf_reader.setLayout(new BorderLayout());// 设置BorderLayout布局
+
+		//设置刚开始显示的大小
+		Dimension dimension = new Dimension(600,600);
+		jf_reader.setMinimumSize(dimension);
+
+		//设置窗口图标
+		ImageIcon imageIcon = new ImageIcon("src\\com\\database\\util\\c.jpg");// 这是图标 .png .jpg .gif 等格式的图片都可以
+		jf_reader.setIconImage(imageIcon.getImage());
+
+		//背景图片
+		try {
+			Image image = new ImageIcon("src\\com\\database\\util\\b.png").getImage();// 这是背景图片 .png .jpg .gif 等格式的图片都可以
+			JLabel imgLabel = new ImageLabel(image,jf_reader);// 将背景图放在"标签"里。
+			jf_reader.getLayeredPane().add(imgLabel, new Integer(Integer.MIN_VALUE));// 注意这里是关键，将背景标签添加到jfram的LayeredPane面板里。
+			Container cp = jf_reader.getContentPane();
+			((JPanel) cp).setOpaque(false); // 注意这里，将内容面板设为透明。这样LayeredPane面板中的背景才能显示出来。
+			imgLabel.setBounds(0, 0, jf_reader.getWidth(), jf_reader.getHeight());// 设置背景标签的位置
+
+			jf_reader.addComponentListener(new ComponentAdapter(){//监听窗口大小改变,然后改变jlabel大小
+				@Override public void componentResized(ComponentEvent e){
+					imgLabel.setSize(jf_reader.getWidth(), jf_reader.getHeight());
+				}});
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		
 		/***** 以下部分就是界面的第一个功能面板 ****/
 		JPanel jp_title = new JPanel();
 		jt_search = new JTextField(20);
@@ -56,13 +79,18 @@ public class ReaderMain implements ActionListener {
 		jp_title.add(jt_space1);
 		jp_title.add(jt_welcome);// 欢迎XX
 		jp_title.add(jt_reader_username);
-		jp_title.add(jb_exit);
-		// 退出键
+		jp_title.add(jb_exit);	// 退出键
+
+		jp_title.setOpaque(false);//透明
 		jf_reader.add(jp_title, BorderLayout.NORTH);// 设置布局在最上面
-		// 一下是搜索后显示的内容
+
+		// 以下是搜索后显示的内容
 		jt_show_detail = new JTextArea();
 		jt_show_detail.setEditable(false);
+
+		jt_show_detail.setOpaque(false);//透明
 		jf_reader.add(jt_show_detail, BorderLayout.CENTER);
+
 		// 读者界面的主要功能
 		JPanel jp_function = new JPanel();
 		BoxLayout bl_function = new BoxLayout(jp_function, BoxLayout.Y_AXIS);// 设置功能按钮显示为BoxLayout
@@ -71,11 +99,15 @@ public class ReaderMain implements ActionListener {
 		JButton jb_already_borrow = new JButton("已借书本");
 		JButton jb_already_search = new JButton("检索历史");
 		JButton jb_change_information = new JButton("修改信息");
+
 		//jp_function.add(jb_borrow);
 		jp_function.add(jb_already_borrow);
 		jp_function.add(jb_already_search);
 		jp_function.add(jb_change_information);
-		jf_reader.add(jp_function, BorderLayout.EAST);
+
+		jp_function.setOpaque(false);//透明
+		jf_reader.add(jp_function, BorderLayout.WEST);
+
 		jf_reader.setVisible(true);
 		jf_reader.setSize(600, 600);
 		jf_reader.setLocation(100, 100);
@@ -109,8 +141,8 @@ public class ReaderMain implements ActionListener {
 			String str_reader_username= jt_reader_username.getText();
 			//String reader_username = jt_reader_search.getText().toString();
 			DatabaseHandler databaseHandler=new DatabaseHandler();
-			Reader reader = databaseHandler
-					.queryByreaderusername(str_reader_username);
+			Reader reader = databaseHandler.queryByreaderusername(str_reader_username);
+
 			if (reader != null) {
 				String username = reader.getReader_username();
 				String password = reader.getReader_password();
@@ -120,10 +152,10 @@ public class ReaderMain implements ActionListener {
 				int borrow = reader.getReader_borrow();
 				String degree = reader.getReader_degree();
 				UpdateReader updateReader = new UpdateReader();
-				updateReader.createUI(username, password, name, authority,
-						dept, borrow, degree);
+				updateReader.createUI(username, password, name, authority, dept, borrow, degree,2);
 			} else {
-				jt_show_detail.append("用户不存在\n");
+				JOptionPane.showMessageDialog(null, "用户不存在", "成功",
+						JOptionPane.INFORMATION_MESSAGE);
 			}
 		}
 

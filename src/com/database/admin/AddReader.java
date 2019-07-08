@@ -1,23 +1,50 @@
 package com.database.admin;
 
-import java.awt.FlowLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 import com.database.info.Reader;
 import com.database.jdbc.DatabaseHandler;
+import com.database.util.ImageLabel;
 
 public class AddReader {
 	public void createUI() {
 		final JFrame jframe = new JFrame("添加读者");
 		jframe.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		jframe.setLayout(new FlowLayout());
+
+		//设置刚开始显示的大小
+		Dimension dimension = new Dimension(250, 320);
+		jframe.setMinimumSize(dimension);
+
+		//设置窗口图标
+		ImageIcon imageIcon = new ImageIcon("src\\com\\database\\util\\c.jpg");// 这是图标 .png .jpg .gif 等格式的图片都可以
+		jframe.setIconImage(imageIcon.getImage());
+
+		//背景图片
+		try {
+			Image image = new ImageIcon("src\\com\\database\\util\\d.png").getImage();// 这是背景图片 .png .jpg .gif 等格式的图片都可以
+			JLabel imgLabel = new ImageLabel(image, jframe);// 将背景图放在"标签"里。
+			jframe.getLayeredPane().add(imgLabel, new Integer(Integer.MIN_VALUE));// 注意这里是关键，将背景标签添加到jfram的LayeredPane面板里。
+			Container cp = jframe.getContentPane();
+			((JPanel) cp).setOpaque(false); // 注意这里，将内容面板设为透明。这样LayeredPane面板中的背景才能显示出来。
+			imgLabel.setBounds(0, 0, jframe.getWidth(), jframe.getHeight());// 设置背景标签的位置
+
+			jframe.addComponentListener(new ComponentAdapter() {//监听窗口大小改变,然后改变jlabel大小
+				@Override
+				public void componentResized(ComponentEvent e) {
+					imgLabel.setSize(jframe.getWidth(), jframe.getHeight());
+				}
+			});
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		/**** 登录的账号密码 ****/
 		JLabel jl_readerusername = new JLabel("登录号 *:");
 		final JTextField jt_readerusername = new JTextField(15);
@@ -64,7 +91,7 @@ public class AddReader {
 
 		jframe.add(jb_confirm);
 		jframe.setVisible(true);
-		jframe.setSize(250, 350);
+		jframe.setSize(250, 320);
 		jframe.setLocation(100, 200);
 		/*****执行添加读者数据操作******/
 		jb_confirm.addActionListener(new ActionListener() {

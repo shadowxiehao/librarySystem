@@ -1,23 +1,19 @@
 package com.database.admin;
 
-import java.awt.BorderLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.util.List;
 
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 import com.database.info.History;
 import com.database.info.Reader;
 import com.database.jdbc.DatabaseHandler;
 import com.database.jdbc.DatabaseHistory;
+import com.database.util.ImageLabel;
 
 
 public class ReaderManage implements ActionListener {
@@ -31,6 +27,33 @@ public class ReaderManage implements ActionListener {
 		JFrame jf_reader = new JFrame("读者管理");
 		jf_reader.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);// 安全退出
 		jf_reader.setLayout(new BorderLayout());// 设置BorderLayout布局
+
+		//设置刚开始显示的大小
+		Dimension dimension = new Dimension(700,400);
+		jf_reader.setMinimumSize(dimension);
+
+		//设置窗口图标
+		ImageIcon imageIcon = new ImageIcon("src\\com\\database\\util\\c.jpg");// 这是图标 .png .jpg .gif 等格式的图片都可以
+		jf_reader.setIconImage(imageIcon.getImage());
+
+		//背景图片
+		try {
+			Image image = new ImageIcon("src\\com\\database\\util\\b.png").getImage();// 这是背景图片 .png .jpg .gif 等格式的图片都可以
+			JLabel imgLabel = new ImageLabel(image,jf_reader);// 将背景图放在"标签"里。
+			jf_reader.getLayeredPane().add(imgLabel, new Integer(Integer.MIN_VALUE));// 注意这里是关键，将背景标签添加到jfram的LayeredPane面板里。
+			Container cp = jf_reader.getContentPane();
+			((JPanel) cp).setOpaque(false); // 注意这里，将内容面板设为透明。这样LayeredPane面板中的背景才能显示出来。
+			imgLabel.setBounds(0, 0, jf_reader.getWidth(), jf_reader.getHeight());// 设置背景标签的位置
+
+			jf_reader.addComponentListener(new ComponentAdapter(){//监听窗口大小改变,然后改变jlabel大小
+				@Override public void componentResized(ComponentEvent e){
+					imgLabel.setSize(jf_reader.getWidth(), jf_reader.getHeight());
+				}});
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+
+
 		/***** 以下部分就是界面的第一个功能面板 ****/
 		JPanel jp_title = new JPanel();
 		JLabel jl = new JLabel("读者登录号");
@@ -40,10 +63,12 @@ public class ReaderManage implements ActionListener {
 		jp_title.add(jt_reader_search);// 搜索条
 		jp_title.add(jb_reader_search);// 确定搜索键
 		// 退出键
+		jp_title.setOpaque(false);//透明
 		jf_reader.add(jp_title, BorderLayout.NORTH);// 设置布局在最上面
 		// 一下是搜索后显示的内容
 		jt_show_detail = new JTextArea();
 		jt_show_detail.setEditable(false);
+		jt_show_detail.setOpaque(false);//透明
 		jf_reader.add(jt_show_detail, BorderLayout.CENTER);
 		// 读者界面的主要功能
 		JPanel jp_function = new JPanel();
@@ -57,6 +82,7 @@ public class ReaderManage implements ActionListener {
 		jp_function.add(jb_reader_change);
 		jp_function.add(jb_reader_delete);
 		jp_function.add(jb_reader_browser);
+		jp_function.setOpaque(false);//透明
 		jf_reader.add(jp_function, BorderLayout.EAST);
 		jf_reader.setVisible(true);
 		jf_reader.setSize(700, 400);
@@ -121,9 +147,10 @@ public class ReaderManage implements ActionListener {
 				String degree = reader.getReader_degree();
 				UpdateReader updateReader = new UpdateReader();
 				updateReader.createUI(username, password, name, authority,
-						dept, borrow, degree);
+						dept, borrow, degree,1);
 			} else {
-				jt_show_detail.append("用户不存在\n");
+				JOptionPane.showMessageDialog(null, "用户不存在", "成功",
+						JOptionPane.INFORMATION_MESSAGE);
 			}
 
 		} else if (event.equals("删除读者")) {

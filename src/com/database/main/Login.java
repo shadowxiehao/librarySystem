@@ -35,6 +35,10 @@ public class Login {
 		Dimension dimension = new Dimension(450,220);
 		jframe.setMinimumSize(dimension);
 
+		//设置窗口图标
+		ImageIcon imageIcon = new ImageIcon("src\\com\\database\\util\\c.jpg");// 这是图标 .png .jpg .gif 等格式的图片都可以
+		jframe.setIconImage(imageIcon.getImage());
+
 		//背景图片
 		try {
 			Image image = new ImageIcon("src\\com\\database\\util\\a.png").getImage();// 这是背景图片 .png .jpg .gif 等格式的图片都可以

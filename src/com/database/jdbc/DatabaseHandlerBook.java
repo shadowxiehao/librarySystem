@@ -145,7 +145,7 @@ public class DatabaseHandlerBook {
 	 * @param book
 	 * @return
 	 */
-	public Book updateBookToSetZero(Book book) {
+	public Book updateBookToSetNum(Book book) {
 		Connection conn = null;
 		PreparedStatement pstm = null;
 		String sql_update_reader = "UPDATE booktable set book_amount=? WHERE book_number=?";

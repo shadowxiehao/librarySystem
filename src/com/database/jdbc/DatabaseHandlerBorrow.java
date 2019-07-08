@@ -58,8 +58,7 @@ public class DatabaseHandlerBorrow {
 		try {
 			conn = JDBC_Connection.getConnection();
 			String sql_select_booktable = "select * from borrowtable where borrow_book_number=?";
-			pstm = conn
-					.prepareStatement(sql_select_booktable);
+			pstm = conn.prepareStatement(sql_select_booktable);
 			pstm.setString(1, borrow_book_number);
 			rs = pstm.executeQuery();
 			while (rs.next()) {
@@ -77,20 +76,55 @@ public class DatabaseHandlerBorrow {
 			System.out.println("成功关闭数据库链接");
 		}
 		return borrow;
-		
 	}
+
+	/***
+	 * 这个用于查询borrow表
+	 * @param borrow_book_number 已经借出的书本号
+	 * @return 返回borrow对象
+	 */
+	public Borrow QueryBorrowTable(String borrow_book_number,String borrwow_name){
+		Borrow borrow = null;
+		Connection conn = null;
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		try {
+			conn = JDBC_Connection.getConnection();
+			String sql_select_booktable = "select * from borrowtable where borrow_book_number=? and borrow_reader_username=?";
+			pstm = conn.prepareStatement(sql_select_booktable);
+			pstm.setString(1, borrow_book_number);
+			pstm.setString(2, borrwow_name);
+			rs = pstm.executeQuery();
+			while (rs.next()) {
+				borrow = new Borrow();
+				borrow.setBorrow_reader_username(rs.getString("borrow_reader_username"));
+				borrow.setBorrow_book_number(rs.getString("borrow_book_number"));
+				borrow.setBorrow_book_name(rs.getString("borrow_book_name"));
+				borrow.setBorrow_time(rs.getString("borrow_time"));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBC_Connection.free(rs, conn, pstm);
+			System.out.println("成功关闭数据库链接");
+		}
+		return borrow;
+	}
+
 	/***
 	 * 用于删除borrow表中的内容，当图书归还的时候调用
 	 * @param borrow_book_number 归还的书本号
 	 */
-	public void DeleteBorrow(String borrow_book_number){
+	public void DeleteBorrow(String borrow_book_number,String borrwow_name){
 		Connection conn = null;
 		PreparedStatement pstm = null;
 		try {
 			conn = JDBC_Connection.getConnection();
-			String sql_delete_borrow = "delete from borrowtable where borrow_book_number=?";
+			String sql_delete_borrow = "delete from borrowtable where borrow_book_number=? and borrow_reader_username=?";
 			pstm = conn.prepareStatement(sql_delete_borrow);
 			pstm.setString(1, borrow_book_number);
+			pstm.setString(2, borrwow_name);
 			pstm.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -98,5 +132,38 @@ public class DatabaseHandlerBorrow {
 			JDBC_Connection.free(null, conn, pstm);
 		}
 	}
-
+	/***
+	 * 这个用于查询borrow表中是否已经有相同人借了同一本书,有的话不能多借
+	 * @param borrow_book_number 将要借出的书本号
+	 * @param borrow_reader_username 借书者名字
+	 * @return 满足同一人没有借同一本书>0本
+	 */
+	public boolean IFSame(String borrow_book_number,String borrow_reader_username){
+		Borrow borrow = null;
+		Connection conn = null;
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		try {
+			conn = JDBC_Connection.getConnection();
+			String sql_select_booktable = "select count(*) from borrowtable where borrow_book_number=? and borrow_reader_username=?";
+			pstm = conn.prepareStatement(sql_select_booktable);
+			pstm.setString(1, borrow_book_number);
+			pstm.setString(2, borrow_reader_username);
+			rs = pstm.executeQuery();
+			if(rs.next()){
+				if(Integer.valueOf(rs.getString(1))==0){
+					return true;
+				}
+			}
+			else {
+				return false;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBC_Connection.free(rs, conn, pstm);
+			System.out.println("成功关闭数据库链接");
+		}
+		return false;
+	}
 }

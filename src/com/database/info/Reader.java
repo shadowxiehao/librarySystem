@@ -4,13 +4,13 @@ package com.database.info;
  * @author XieHao
  */
 public class Reader {
-	private String reader_username;
-	private String reader_password;
-	private String reader_name;
-	private String reader_dept;
-	private String reader_degree;
-	private int authority;
-	private int reader_borrow;
+	private String reader_username;//名(昵称)(唯一)
+	private String reader_password;//密码
+	private String reader_name;//读者名
+	private String reader_dept;//所在系
+	private String reader_degree;//学历
+	private int authority;//权限级别
+	private int reader_borrow;//借阅数量
 
 	public String getReader_username() {
 		return reader_username;

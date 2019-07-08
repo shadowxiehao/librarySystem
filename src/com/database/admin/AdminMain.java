@@ -43,7 +43,11 @@ public class AdminMain implements ActionListener {
         //设置刚开始显示的大小
         Dimension dimension = new Dimension(610,400);
         jf_admin.setMinimumSize(dimension);
-        
+
+        //设置窗口图标
+        ImageIcon imageIcon = new ImageIcon("src\\com\\database\\util\\c.jpg");// 这是图标 .png .jpg .gif 等格式的图片都可以
+        jf_admin.setIconImage(imageIcon.getImage());
+
         //背景图片
         try {
             Image image = new ImageIcon("src\\com\\database\\util\\b.png").getImage();// 这是背景图片 .png .jpg .gif 等格式的图片都可以
@@ -68,15 +72,20 @@ public class AdminMain implements ActionListener {
         jb_admin_search = new JButton("搜索");
         JLabel jt_admin_space1 = new JLabel("  ");
         JLabel jt_admin_welcome = new JLabel("欢迎您：");
-        JLabel jt_admin_space = new JLabel("   ");
         JButton jb_admin_exit = new JButton("退出");
         jp_admin_title.add(jt_admin_search);// 搜索条
         jp_admin_title.add(jb_admin_search);// 确定搜索键
         jp_admin_title.add(jt_admin_space1);
-        jp_admin_title.add(jt_admin_welcome);// 欢迎XX
-        jp_admin_title.add(jt_admin_space);
-        jp_admin_title.add(jb_admin_exit);
+        // 欢迎XX
+        jp_admin_title.add(jt_admin_welcome);
+        JLabel welcome_name = new JLabel();
+        welcome_name.setText(admin.getAdmin_name()+"  ");
+        welcome_name.setSize(100,22);
+        jp_admin_title.add(welcome_name);
+
         // 退出键
+        jp_admin_title.add(jb_admin_exit);
+
         jf_admin.add(jp_admin_title, BorderLayout.NORTH);// 设置布局在最上面
         jp_admin_title.setOpaque(false);//透明
 
