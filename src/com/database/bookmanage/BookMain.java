@@ -73,7 +73,7 @@ public class BookMain implements ActionListener {
 		jf_book.add(jp_function, BorderLayout.EAST);
 		jf_book.setVisible(true);
 		jf_book.setSize(650, 400);
-		jf_book.setLocation(100, 100);
+		jf_book.setLocation(100, 240);
 		jb_book_search.addActionListener(this);
 		jb_deletebooks.addActionListener(this);
 		jb_changebooks.addActionListener(this);

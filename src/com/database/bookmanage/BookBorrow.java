@@ -68,7 +68,7 @@ public class BookBorrow {
 		JLabel jl_borrow_time = new JLabel("时间  :");
 		final JTextField jt_borrow_time = new JTextField(15);
 		UseUtil useUtil = new UseUtil();
-		jt_borrow_time.setText(useUtil.GetTime());
+		jt_borrow_time.setText(UseUtil.GetTime());
 		/*** 确认键 ***/
 		JButton jb_confirm = new JButton("出借");
 		jb_confirm.setSize(15, 5);
@@ -85,7 +85,7 @@ public class BookBorrow {
 		jframe.add(jb_confirm);
 		jframe.setVisible(true);
 		jframe.setSize(250, 320);
-		jframe.setLocation(100, 200);
+		jframe.setLocation(100, 260);
 		jb_confirm.addActionListener(new ActionListener() {
 
 			@Override

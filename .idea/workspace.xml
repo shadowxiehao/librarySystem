@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="91c53103-a57e-4005-9e46-5d57fe120abb" name="Default Changelist" comment="2019.7.8 11:43&#10;修复了一些bug,全背景式已完成&#10;改动了借书和还书的策略,支持借还给不同用户,相应库存数变动&#10;&#10;还有些其它进行了改动,但是忘了改了啥,无奈">
+    <list default="true" id="91c53103-a57e-4005-9e46-5d57fe120abb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/database/admin/BorrowOrReturn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/database/admin/BorrowOrReturn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/database/info/Browser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/database/info/Browser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/database/jdbc/DatabaseHandlerBrowser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/database/jdbc/DatabaseHandlerBrowser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/database/admin/ReaderManage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/database/admin/ReaderManage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/database/bookmanage/BookBorrow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/database/bookmanage/BookBorrow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/database/bookmanage/BookMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/database/bookmanage/BookMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/database/reader/ReaderMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/database/reader/ReaderMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/database/util/UseUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/database/util/UseUtil.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/bin/" />
@@ -99,10 +99,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/database/jdbc/DatabaseHandlerBook.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="62" column="35" lean-forward="true" selection-start-line="62" selection-start-column="35" selection-end-line="62" selection-end-column="35" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/database/reader/ReaderMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="250" column="52" selection-start-line="250" selection-start-column="52" selection-end-line="250" selection-end-column="52" />
+            <state relative-caret-position="285">
+              <caret line="303" column="47" lean-forward="true" selection-start-line="303" selection-start-column="47" selection-end-line="303" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -111,10 +123,25 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/database/util/UseUtil.java">
+        <entry file="file://$PROJECT_DIR$/src/com/database/admin/AdminMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="9" column="20" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="20" />
+            <state relative-caret-position="81">
+              <caret line="191" selection-start-line="191" selection-end-line="192" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/database/util/ResultPanel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="27" column="49" lean-forward="true" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="49" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -128,35 +155,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/database/jdbc/DatabaseHandlerBorrow.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="286">
               <caret line="127" column="33" lean-forward="true" selection-start-line="127" selection-start-column="33" selection-end-line="127" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/database/info/Browser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="25" selection-start-line="25" selection-end-line="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/database/bookmanage/BookMain.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="99" column="17" lean-forward="true" selection-start-line="99" selection-start-column="17" selection-end-line="99" selection-end-column="17" />
-              <folding>
-                <element signature="e#1542#1721#0" expanded="true" />
-                <element signature="e#1720#1721#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -173,17 +178,12 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>admin_username</find>
-      <find>pack</find>
-      <find>jp_admin_function</find>
       <find>login_identity</find>
       <find>opaque</find>
       <find>jframe</find>
-      <find>jt_admin_show_detail</find>
       <find>jf_admin</find>
       <find>jt_welcome</find>
       <find>jt_admin_space</find>
-      <find>jt_reader_username</find>
       <find>panel</find>
       <find>jl_username</find>
       <find>search_borrow_history()</find>
@@ -199,10 +199,15 @@
       <find>browserhistorytable</find>
       <find>list_browser</find>
       <find>browser</find>
-      <find>jt_reader_username1</find>
       <find>book_number</find>
       <find>Browser</find>
       <find>借</find>
+      <find>jt_admin_show_detail</find>
+      <find>jt_reader_username1</find>
+      <find>search_book_name</find>
+      <find>jt_reader_username</find>
+      <find>出借</find>
+      <find>已借书本</find>
     </findStrings>
     <replaceStrings>
       <replace>@author XieHao</replace>
@@ -238,22 +243,22 @@
         <option value="$PROJECT_DIR$/src/com/database/util/result_panel.java" />
         <option value="$PROJECT_DIR$/src/com/database/util/ResultPanel.java" />
         <option value="$PROJECT_DIR$/src/com/database/main/Login.java" />
-        <option value="$PROJECT_DIR$/src/com/database/admin/AdminMain.java" />
         <option value="$PROJECT_DIR$/src/com/database/info/Reader.java" />
         <option value="$PROJECT_DIR$/src/com/database/admin/PublishNewBooks.java" />
         <option value="$PROJECT_DIR$/src/com/database/admin/AddReader.java" />
-        <option value="$PROJECT_DIR$/src/com/database/admin/ReaderManage.java" />
         <option value="$PROJECT_DIR$/src/com/database/admin/UpdateReader.java" />
-        <option value="$PROJECT_DIR$/src/com/database/bookmanage/BookMain.java" />
         <option value="$PROJECT_DIR$/src/com/database/bookmanage/UpdateBooks.java" />
-        <option value="$PROJECT_DIR$/src/com/database/jdbc/DatabaseHandlerBook.java" />
-        <option value="$PROJECT_DIR$/src/com/database/bookmanage/BookBorrow.java" />
         <option value="$PROJECT_DIR$/src/com/database/info/Browser.java" />
         <option value="$PROJECT_DIR$/src/com/database/util/UseUtil.java" />
-        <option value="$PROJECT_DIR$/src/com/database/reader/ReaderMain.java" />
         <option value="$PROJECT_DIR$/src/com/database/jdbc/DatabaseHandlerBrowser.java" />
         <option value="$PROJECT_DIR$/src/com/database/jdbc/DatabaseHandlerBorrow.java" />
+        <option value="$PROJECT_DIR$/src/com/database/jdbc/DatabaseHandlerBook.java" />
+        <option value="$PROJECT_DIR$/src/com/database/admin/AdminMain.java" />
+        <option value="$PROJECT_DIR$/src/com/database/admin/ReaderManage.java" />
+        <option value="$PROJECT_DIR$/src/com/database/bookmanage/BookMain.java" />
+        <option value="$PROJECT_DIR$/src/com/database/bookmanage/BookBorrow.java" />
         <option value="$PROJECT_DIR$/src/com/database/admin/BorrowOrReturn.java" />
+        <option value="$PROJECT_DIR$/src/com/database/reader/ReaderMain.java" />
       </list>
     </option>
   </component>
@@ -411,7 +416,7 @@
       <option name="presentableId" value="Default" />
       <updated>1562162188590</updated>
       <workItem from="1562162224260" duration="33644000" />
-      <workItem from="1562417089191" duration="58273000" />
+      <workItem from="1562417089191" duration="69095000" />
     </task>
     <task id="LOCAL-00001" summary="2019.7.5 16:22 &#10;图书馆数据库管理系统&#10;第一次提交&#10;准备进行驱动的修改 以便让其正常使用">
       <created>1562314997554</created>
@@ -455,11 +460,25 @@
       <option name="project" value="LOCAL" />
       <updated>1562557528391</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="2019.7.8 14:19&#10;增加了对borrowtable的触发器,当borrowtable书被归还所以删除时,returntable会自动增添相关信息与计算费用等&#10;补充了部分字段等">
+      <created>1562566912031</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1562566912031</updated>
+    </task>
+    <task id="LOCAL-00008" summary="2019.7.8 15:56&#10;增加了管理员界面对书序号搜索的支持(运用union)&#10;增加了管理员界面表格化显示,并使其更友好化&#10;(time is running out, 我不知道还能改多少了, 估计要再改改就赶报告了,嘤嘤嘤)">
+      <created>1562572747189</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1562572747189</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="91917000" />
+    <option name="totallyTimeSpent" value="102739000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1488" height="878" extended-state="6" />
@@ -474,7 +493,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32933334" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49720672" visible="true" weight="0.32933334" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.47486034" visible="true" weight="0.32933334" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -483,8 +502,8 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32933334" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5027933" side_tool="true" visible="true" weight="0.32933334" />
-      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.49790502" weight="0.32933334" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5251397" side_tool="true" visible="true" weight="0.32933334" />
+      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.47555867" weight="0.32933334" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -507,7 +526,9 @@
     <MESSAGE value="2019.7.7 11:12&#10;忘了这版改了什么了" />
     <MESSAGE value="2019.7.7 21:52&#10;添加了两处背景" />
     <MESSAGE value="2019.7.8 11:43&#10;修复了一些bug,全背景式已完成&#10;改动了借书和还书的策略,支持借还给不同用户,相应库存数变动&#10;&#10;还有些其它进行了改动,但是忘了改了啥,无奈" />
-    <option name="LAST_COMMIT_MESSAGE" value="2019.7.8 11:43&#10;修复了一些bug,全背景式已完成&#10;改动了借书和还书的策略,支持借还给不同用户,相应库存数变动&#10;&#10;还有些其它进行了改动,但是忘了改了啥,无奈" />
+    <MESSAGE value="2019.7.8 14:19&#10;增加了对borrowtable的触发器,当borrowtable书被归还所以删除时,returntable会自动增添相关信息与计算费用等&#10;补充了部分字段等" />
+    <MESSAGE value="2019.7.8 15:56&#10;增加了管理员界面对书序号搜索的支持(运用union)&#10;增加了管理员界面表格化显示,并使其更友好化&#10;(time is running out, 我不知道还能改多少了, 估计要再改改就赶报告了,嘤嘤嘤)" />
+    <option name="LAST_COMMIT_MESSAGE" value="2019.7.8 15:56&#10;增加了管理员界面对书序号搜索的支持(运用union)&#10;增加了管理员界面表格化显示,并使其更友好化&#10;(time is running out, 我不知道还能改多少了, 估计要再改改就赶报告了,嘤嘤嘤)" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/librarySystem.iml">
@@ -616,16 +637,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/database/util/ResultPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/database/info/Reader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -641,20 +652,6 @@
             <element signature="imports" expanded="true" />
             <element signature="e#1425#1579#0" expanded="true" />
             <element signature="e#1578#1579#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/database/admin/AdminMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-600">
-          <caret line="41" column="8" lean-forward="true" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#811#812#0" expanded="true" />
-            <element signature="e#845#846#0" expanded="true" />
-            <element signature="e#1933#2153#0" expanded="true" />
-            <element signature="e#2152#2153#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -706,16 +703,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/database/jdbc/DatabaseHandlerBook.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="147" column="31" selection-start-line="147" selection-start-column="16" selection-end-line="147" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/database/bookmanage/BookMain.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -752,16 +739,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="32" selection-start-line="32" selection-end-line="38" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/database/reader/ReaderMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="250" column="52" selection-start-line="250" selection-start-column="52" selection-end-line="250" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -807,6 +784,46 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
           <caret line="127" column="33" lean-forward="true" selection-start-line="127" selection-start-column="33" selection-end-line="127" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/database/util/ResultPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="27" column="49" lean-forward="true" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/database/jdbc/DatabaseHandlerBook.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="62" column="35" lean-forward="true" selection-start-line="62" selection-start-column="35" selection-end-line="62" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/database/admin/AdminMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="191" selection-start-line="191" selection-end-line="192" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/database/reader/ReaderMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="303" column="47" lean-forward="true" selection-start-line="303" selection-start-column="47" selection-end-line="303" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -83,7 +83,7 @@ public class BorrowOrReturn implements ActionListener {
 		jf_reader.add(jp_function, BorderLayout.EAST);
 		jf_reader.setVisible(true);
 		jf_reader.setSize(650, 400);
-		jf_reader.setLocation(100, 100);
+		jf_reader.setLocation(100, 240);
 		jb_book_search.addActionListener(this);
 		jb_borrow.addActionListener(this);
 		jb_return.addActionListener(this);

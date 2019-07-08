@@ -86,7 +86,7 @@ public class ReaderManage implements ActionListener {
 		jf_reader.add(jp_function, BorderLayout.EAST);
 		jf_reader.setVisible(true);
 		jf_reader.setSize(700, 400);
-		jf_reader.setLocation(100, 100);
+		jf_reader.setLocation(100, 240);
 		jf_reader.setResizable(false);
 
 		jb_reader_search.addActionListener(this);
