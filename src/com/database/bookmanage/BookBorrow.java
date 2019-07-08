@@ -90,7 +90,7 @@ public class BookBorrow {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {//借书动作
-				// TODO Auto-generated method stub
+				// TODO Auto-generated method  //不好意思,这里扩展空间很大,还望后人接着搬砖
 				DatabaseHandlerBorrow databaseHandlerBorrow = new DatabaseHandlerBorrow();
 				Borrow borrow = new Borrow();
 				borrow.setBorrow_book_number(jt_borrow_booknumber.getText().trim());
