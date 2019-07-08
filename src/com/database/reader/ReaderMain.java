@@ -127,7 +127,7 @@ public class ReaderMain implements ActionListener {
         jf_reader.add(jp_function, BorderLayout.WEST);
 
         jf_reader.setVisible(true);
-        jf_reader.setSize(600, 600);
+        jf_reader.setSize(800, 600);
         jf_reader.setLocation(100, 100);
         // ×é¼şÉèÖÃ¼àÌı
         jb_search.addActionListener(this);

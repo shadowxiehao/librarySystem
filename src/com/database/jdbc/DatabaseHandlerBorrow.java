@@ -8,6 +8,8 @@ import com.database.info.Borrow;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /***
@@ -165,5 +167,37 @@ public class DatabaseHandlerBorrow {
 			System.out.println("成功关闭数据库链接");
 		}
 		return false;
+	}
+	/**
+	 * 用一个list来显示所有在借的书本
+	 *
+	 * @param
+	 * @return 返回当然是信息列表啦,具体可以看代码
+	 */
+	public List<Borrow> queryBookOnBorrow() {
+		Connection conn = null;
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		List<Borrow> list_books = new ArrayList<Borrow>();
+		try {
+			conn = JDBC_Connection.getConnection();
+			//联合查询,可以搜索到书名或序号
+			String sql_select_bookname = "select * from borrowtable";
+			pstm = conn.prepareStatement(sql_select_bookname);
+			rs = pstm.executeQuery();
+			while (rs.next()) {
+				Borrow borrow = new Borrow();
+				borrow.setBorrow_reader_username(rs.getString("borrow_reader_username"));
+				borrow.setBorrow_book_number(rs.getString("borrow_book_number"));
+				borrow.setBorrow_book_name(rs.getString("borrow_book_name"));
+				borrow.setBorrow_time(rs.getString("borrow_time"));
+				list_books.add(borrow);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBC_Connection.free(rs, conn, pstm);
+		}
+		return list_books;
 	}
 }

@@ -16,7 +16,7 @@ import java.sql.PreparedStatement;
  */
 public class DatabaseHandlerBook {
 	/**
-	 * 用一个list来显示所有搜索到的课本，显示模糊搜索
+	 * 用一个list来显示所有搜索到的书本，显示模糊搜索
 	 * 
 	 * @param book_name 虽然我一开始写的name,但是后来支持了序号的搜索,所以它也可以是序号,嗯,但是名字我想不到好的,所以先不改名字啦
 	 * @return 返回当然是信息列表啦,具体可以看代码
@@ -54,7 +54,7 @@ public class DatabaseHandlerBook {
 	}
 
 		/**
-		 * 刚开始直接显示所有搜索到的课本
+		 * 刚开始直接显示所有搜索到的书本
 		 * @param
 		 * @return 返回当然是信息列表啦,具体可以看代码
 		 */

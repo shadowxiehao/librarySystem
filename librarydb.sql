@@ -11,7 +11,7 @@
  Target Server Version : 80015
  File Encoding         : 65001
 
- Date: 08/07/2019 17:49:26
+ Date: 08/07/2019 23:11:58
 */
 
 SET NAMES utf8mb4;
@@ -58,17 +58,17 @@ CREATE TABLE `booktable`  (
 -- ----------------------------
 INSERT INTO `booktable` VALUES ('0001', '幸运', 'DOC.A', '2010/03/10', 10, 'xh');
 INSERT INTO `booktable` VALUES ('0002', '围城', 'MR.A', '2017/06/01', 2, 'xh');
-INSERT INTO `booktable` VALUES ('0003', '老人与海', 'TOM', '2018/12/02', 3, 'xh');
+INSERT INTO `booktable` VALUES ('0003', '老人与海', 'TOM', '2018/12/02', 4, 'xh');
 INSERT INTO `booktable` VALUES ('0004', '讲不完的故事', 'LIGHT', '2006/01/01', 4, 'xh');
 INSERT INTO `booktable` VALUES ('0005', '不教胡马度阴山', 'SUKA', '2008/06/06', 12, '400001');
 INSERT INTO `booktable` VALUES ('0006', '围殴', 'JIM', '2009/11/08', 5, 'xh');
-INSERT INTO `booktable` VALUES ('0008', '围城2', 'DUDE', '2019/03/27', 7, 'xh');
+INSERT INTO `booktable` VALUES ('0008', '围城2', 'DUDE', '2019/03/27', 8, 'xh');
 INSERT INTO `booktable` VALUES ('0009', '救我嘤嘤嘤', 'MR.Xie', '2019/07/06', 3, '400001');
 INSERT INTO `booktable` VALUES ('0012', '数据库最好玩啦', 'Teacher', '2019/07/08', 20, '400001');
 INSERT INTO `booktable` VALUES ('0021', '养生的智慧', 'Life', '2011/08/17', 5, 'xh');
 INSERT INTO `booktable` VALUES ('0034', '星际旅行', 'GO', '2014/04/26', 9, '400001');
 INSERT INTO `booktable` VALUES ('0066', '一个人的世界', 'MR.Lonely', '2015/02/12', 1, 'xh');
-INSERT INTO `booktable` VALUES ('0072', '凑个长度', 'XieHao', '2019/09/03', 31, 'xh');
+INSERT INTO `booktable` VALUES ('0072', '凑个长度', 'XieHao', '2019/09/03', 30, 'xh');
 INSERT INTO `booktable` VALUES ('0089', '2012', 'MISS.Video', '2012/12/12', 12, 'xh');
 INSERT INTO `booktable` VALUES ('0092', '爱你摸摸哒', 'Dr.Love', '2019/09/11', 99, '400001');
 INSERT INTO `booktable` VALUES ('0098', 'Dream', 'Doc.Love', '2019/09/02', 100, 'xh');
@@ -99,6 +99,7 @@ CREATE TABLE `borrowtable`  (
 INSERT INTO `borrowtable` VALUES ('300001', '0006', '围城', '2019-07-02');
 INSERT INTO `borrowtable` VALUES ('300001', '0008', '围城2', '2019-07-08');
 INSERT INTO `borrowtable` VALUES ('300002', '0003', '老人与海', '2019-07-08');
+INSERT INTO `borrowtable` VALUES ('300002', '0072', '凑个长度', '2019-07-08');
 
 -- ----------------------------
 -- Table structure for browserhistorytable
@@ -155,6 +156,7 @@ INSERT INTO `historytable` VALUES ('300001', '0008', '围城2', '2019-07-08');
 INSERT INTO `historytable` VALUES ('300002', '0003', '老人与海', '2019-07-08');
 INSERT INTO `historytable` VALUES ('xh', '0001', '幸运', '2019-07-08');
 INSERT INTO `historytable` VALUES ('300002', '0006', '围殴', '2019-07-08');
+INSERT INTO `historytable` VALUES ('300002', '0072', '凑个长度', '2019-07-08');
 
 -- ----------------------------
 -- Table structure for readertable
@@ -203,6 +205,8 @@ CREATE TABLE `returntable`  (
 -- ----------------------------
 INSERT INTO `returntable` VALUES ('300001', '老人与海', '2019-07-08', '0', 0, '2019-07-08');
 INSERT INTO `returntable` VALUES ('300002', '围殴', '2019-07-08', '0', 0, '2019-07-08');
+INSERT INTO `returntable` VALUES ('300001', '老人与海', '2019-07-08', '3.8', 38, '2019-05-01');
+INSERT INTO `returntable` VALUES ('300002', '围城2', '2019-07-08', '3.7', 37, '2019-05-02');
 
 -- ----------------------------
 -- Triggers structure for table borrowtable
@@ -212,7 +216,7 @@ delimiter ;;
 CREATE TRIGGER `Trig_borrow_delete` AFTER DELETE ON `borrowtable` FOR EACH ROW BEGIN
 	
 	declare daytime int;
-	select (TO_DAYS(str_to_date(old.borrow_time, '%Y-%m-%d'))-TO_DAYS(now())) into daytime;
+	select (TO_DAYS(now())-TO_DAYS(str_to_date(old.borrow_time, '%Y-%m-%d'))) into daytime;
 	IF(daytime>30) THEN
 	INSERT INTO returntable(reader_username,borrow_book_name,return_time,return_money,return_overtime,borrow_time)
 	VALUES(old.borrow_reader_username,old.borrow_book_name,date_format(now(), '%Y-%m-%d'),(daytime-30)*0.1,daytime-30,old.borrow_time);

@@ -11,8 +11,13 @@ import javax.swing.table.DefaultTableModel;
 
 import com.database.info.Admin;
 import com.database.info.Book;
+import com.database.info.Borrow;
+import com.database.info.Return;
+
 import com.database.bookmanage.BookMain;
 import com.database.jdbc.DatabaseHandlerBook;
+import com.database.jdbc.DatabaseHandlerBorrow;
+import com.database.jdbc.DatabaseHandlerReturn;
 import com.database.main.Login;
 import com.database.util.ImageLabel;//构造背景图用
 import com.database.jdbc.BackupOrRecover;//备份与恢复
@@ -26,7 +31,8 @@ public class AdminMain implements ActionListener {
     JFrame jf_admin;
     JButton jb_admin_search, jb_admin_exit, jb_admin_borrow,
             jb_admin_reader_manage, jb_admin_book_manager,
-            jb_admin_publish_newbook, jb_admin_backup_manage, jb_admin_recover_manage;
+            jb_admin_publish_newbook, jb_admin_borrow_manage,
+            jb_admin_return_manage, jb_admin_backup_manage, jb_admin_recover_manage;
     //private JTextArea jt_admin_show_detail;
     private JTable table = new JTable();//显示结果的表格
     private DefaultTableModel mm = null;//表默认格式
@@ -122,13 +128,17 @@ public class AdminMain implements ActionListener {
         jb_admin_publish_newbook = new JButton("发布新书");
         jb_admin_book_manager = new JButton("图书管理");
         jb_admin_reader_manage = new JButton("读者管理");
+        jb_admin_borrow_manage = new JButton("已借图书");
+        jb_admin_return_manage = new JButton("还书历史");
         jb_admin_backup_manage = new JButton("数据备份");
         jb_admin_recover_manage = new JButton("数据恢复");
-
+        //添加按钮
         jp_admin_function.add(jb_admin_borrow);
         jp_admin_function.add(jb_admin_publish_newbook);
         jp_admin_function.add(jb_admin_book_manager);
         jp_admin_function.add(jb_admin_reader_manage);
+        jp_admin_function.add(jb_admin_borrow_manage);
+        jp_admin_function.add(jb_admin_return_manage);
         jp_admin_function.add(jb_admin_backup_manage);
         jp_admin_function.add(jb_admin_recover_manage);
 
@@ -136,7 +146,7 @@ public class AdminMain implements ActionListener {
         jf_admin.add(jp_admin_function, BorderLayout.WEST);
 
         jf_admin.setVisible(true);
-        jf_admin.setSize(610, 400);
+        jf_admin.setSize(800, 600);
         jf_admin.setLocation(100, 100);
 
 
@@ -149,6 +159,9 @@ public class AdminMain implements ActionListener {
         jb_admin_publish_newbook.addActionListener(this);
         // 修改图书信息
         jb_admin_reader_manage.addActionListener(this);// 读者信息管理
+        //查看已借和归还信息
+        jb_admin_borrow_manage.addActionListener(this);
+        jb_admin_return_manage.addActionListener(this);
         //备份与恢复
         jb_admin_backup_manage.addActionListener(this);//备份
         jb_admin_recover_manage.addActionListener(this);//恢复
@@ -186,7 +199,13 @@ public class AdminMain implements ActionListener {
             System.out.println("search7");
             ReaderManage readerManage = new ReaderManage();
             readerManage.createUI();
-        } else if (event.equals("数据备份")) {
+        } else if (event.equals("已借图书")) {
+            search_borrow_book();
+        }
+        else if (event.equals("还书历史")) {
+            search_return_book();
+        }
+        else if (event.equals("数据备份")) {
             boolean TureOrFalse = false;
             String backup_path = JOptionPane.showInputDialog("请输入文件保存地址:");//s就是得到弹出框输入的信息
             if (backup_path.trim().equals("")) {
@@ -223,10 +242,10 @@ public class AdminMain implements ActionListener {
     /**
      * 用搜索书本名字进行搜索！同时实现模糊搜索
      */
-
     public void search_book_name() {
         List<Book> book = null;
         System.out.println("成功按下搜索键");
+        mm.setColumnIdentifiers(tablehead);
         mm.setRowCount(0);//显示清空
         String bookname = jt_admin_search.getText();
         System.out.println(bookname);
@@ -262,6 +281,7 @@ public class AdminMain implements ActionListener {
 
     public void search_book_all() {
         List<Book> book = null;
+        mm.setColumnIdentifiers(tablehead);
         mm.setRowCount(0);//显示清空
         DatabaseHandlerBook databaseHandlerBook = new DatabaseHandlerBook();
         book = databaseHandlerBook.queryBook();//查所有书
@@ -271,6 +291,49 @@ public class AdminMain implements ActionListener {
                 String[] row = {book.get(i).getBook_number(), book.get(i).getBook_name(),
                         book.get(i).getBook_author(), book.get(i).getBook_publishtime(),
                         book.get(i).getBook_amount() + "", book.get(i).getAdmin_username()};
+                mm.addRow(row);
+            }
+
+        } else {
+            System.out.println("不存在");
+            JOptionPane.showMessageDialog(null, "数据库目前没有书录入", "错误",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    public void search_borrow_book() {//显示已借书籍
+        List<Borrow> borrow = null;
+        String[] newhead = {"读者用户名","书本号","书名","借阅日期"};
+        mm.setColumnIdentifiers(newhead);
+        mm.setRowCount(0);//显示清空
+        DatabaseHandlerBorrow databaseHandlerBorrow = new DatabaseHandlerBorrow();
+        borrow = databaseHandlerBorrow.queryBookOnBorrow();//查所有书
+
+        if (borrow != null) {
+            for (int i = 0; i < borrow.size(); i++) {
+                String[] row = {borrow.get(i).getBorrow_reader_username(), borrow.get(i).getBorrow_book_number(),
+                        borrow.get(i).getBorrow_book_name(), borrow.get(i).getBorrow_time()};
+                mm.addRow(row);
+            }
+
+        } else {
+            System.out.println("不存在");
+            JOptionPane.showMessageDialog(null, "数据库目前没有书录入", "错误",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    public void search_return_book() {//显示已还书籍
+        List<Return> returner = null;
+        String[] newhead = {"读者用户名","书名","归还日期","超时金额(元)","超时时长(天)","借阅日期"};
+        mm.setColumnIdentifiers(newhead);
+        mm.setRowCount(0);//显示清空
+        DatabaseHandlerReturn databaseHandlerReturn = new DatabaseHandlerReturn();
+        returner = databaseHandlerReturn.queryBookOnReturn();//查所有书
+
+        if (returner != null) {
+            for (int i = 0; i < returner.size(); i++) {
+                String[] row = {returner.get(i).getReturn_reader_username(), returner.get(i).getReturn_borrow_book_name(),
+                        returner.get(i).getReturn_time(), returner.get(i).getReturn_money(),
+                        returner.get(i).getReturn_overtime() + "", returner.get(i).getReturn_borrow_time()};
                 mm.addRow(row);
             }
 
