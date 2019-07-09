@@ -225,15 +225,17 @@ public class AdminMain implements ActionListener {
             String recover_path = JOptionPane.showInputDialog("请输入文件保存地址:");//s就是得到弹出框输入的信息
             if (recover_path.trim().equals("")) {
             } else {
-                System.out.println("开始恢复");
-                TureOrFalse = BackupOrRecover.recover(recover_path);
-                if (TureOrFalse == true) {
-                    JOptionPane.showMessageDialog(null, "恢复完成!", "成功",
-                            JOptionPane.INFORMATION_MESSAGE);
-                } else {
-                    JOptionPane.showMessageDialog(null, "恢复失败,试试输入完整路径名等!", "错误",
-                            JOptionPane.ERROR_MESSAGE);
-                }
+                try {
+                    System.out.println("开始恢复");
+                    TureOrFalse = BackupOrRecover.recover(recover_path);
+                    if (TureOrFalse == true) {
+                        JOptionPane.showMessageDialog(null, "恢复完成!", "成功",
+                                JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "恢复失败,试试输入完整路径名等!", "错误",
+                                JOptionPane.ERROR_MESSAGE);
+                    }
+                }catch (Exception e1){e1.printStackTrace();}
             }
         }
 

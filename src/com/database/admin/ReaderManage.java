@@ -108,6 +108,7 @@ public class ReaderManage implements ActionListener {
 			System.out.println(reader_username);
 			Reader reader = databaseHandler
 					.queryByreaderusername(reader_username);
+			jt_show_detail.setText("");
 			jt_show_detail.append("账号\t " + "密码\t " + "姓名\t " + "权限号\t "
 					+ "所在系\t " + "已借数\t " + "学历\t ");
 			if (reader != null) {

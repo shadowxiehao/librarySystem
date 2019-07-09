@@ -11,7 +11,7 @@
  Target Server Version : 80015
  File Encoding         : 65001
 
- Date: 08/07/2019 23:11:58
+ Date: 09/07/2019 10:59:00
 */
 
 SET NAMES utf8mb4;
@@ -58,8 +58,8 @@ CREATE TABLE `booktable`  (
 -- ----------------------------
 INSERT INTO `booktable` VALUES ('0001', '幸运', 'DOC.A', '2010/03/10', 10, 'xh');
 INSERT INTO `booktable` VALUES ('0002', '围城', 'MR.A', '2017/06/01', 2, 'xh');
-INSERT INTO `booktable` VALUES ('0003', '老人与海', 'TOM', '2018/12/02', 4, 'xh');
-INSERT INTO `booktable` VALUES ('0004', '讲不完的故事', 'LIGHT', '2006/01/01', 4, 'xh');
+INSERT INTO `booktable` VALUES ('0003', '老人与海', 'TOM', '2018/12/02', 3, 'xh');
+INSERT INTO `booktable` VALUES ('0004', '讲不完的故事', 'LIGHT', '2006/01/01', 3, 'xh');
 INSERT INTO `booktable` VALUES ('0005', '不教胡马度阴山', 'SUKA', '2008/06/06', 12, '400001');
 INSERT INTO `booktable` VALUES ('0006', '围殴', 'JIM', '2009/11/08', 5, 'xh');
 INSERT INTO `booktable` VALUES ('0008', '围城2', 'DUDE', '2019/03/27', 8, 'xh');
@@ -96,9 +96,11 @@ CREATE TABLE `borrowtable`  (
 -- ----------------------------
 -- Records of borrowtable
 -- ----------------------------
+INSERT INTO `borrowtable` VALUES ('300001', '0003', '老人与海', '2019-07-09');
 INSERT INTO `borrowtable` VALUES ('300001', '0006', '围城', '2019-07-02');
 INSERT INTO `borrowtable` VALUES ('300001', '0008', '围城2', '2019-07-08');
 INSERT INTO `borrowtable` VALUES ('300002', '0003', '老人与海', '2019-07-08');
+INSERT INTO `borrowtable` VALUES ('300002', '0004', '讲不完的故事', '2019-07-09');
 INSERT INTO `borrowtable` VALUES ('300002', '0072', '凑个长度', '2019-07-08');
 
 -- ----------------------------
@@ -157,6 +159,10 @@ INSERT INTO `historytable` VALUES ('300002', '0003', '老人与海', '2019-07-08
 INSERT INTO `historytable` VALUES ('xh', '0001', '幸运', '2019-07-08');
 INSERT INTO `historytable` VALUES ('300002', '0006', '围殴', '2019-07-08');
 INSERT INTO `historytable` VALUES ('300002', '0072', '凑个长度', '2019-07-08');
+INSERT INTO `historytable` VALUES ('300001', '0003', '老人与海', '2019-07-09');
+INSERT INTO `historytable` VALUES ('300001', '0003', '老人与海', '2019-07-09');
+INSERT INTO `historytable` VALUES ('300002', '0004', '讲不完的故事', '2019-07-09');
+INSERT INTO `historytable` VALUES ('300002', '0004', '讲不完的故事', '2019-07-09');
 
 -- ----------------------------
 -- Table structure for readertable
@@ -177,8 +183,8 @@ CREATE TABLE `readertable`  (
 -- Records of readertable
 -- ----------------------------
 INSERT INTO `readertable` VALUES ('1', '1', '谢昊', 2, '软件工程', 0, '本科');
-INSERT INTO `readertable` VALUES ('300001', '123', '光影1', 2, '软件工程', 0, '本科');
-INSERT INTO `readertable` VALUES ('300002', '1234', '张三', 2, '外国语', 0, '研究生');
+INSERT INTO `readertable` VALUES ('300001', '123', '光影1', 2, '软件工程', 3, '本科');
+INSERT INTO `readertable` VALUES ('300002', '1234', '张三', 2, '外国语', 3, '研究生');
 INSERT INTO `readertable` VALUES ('300003', '1234', '李四', 2, '信息工程', 0, '本科');
 INSERT INTO `readertable` VALUES ('300004', '123', '张si', 2, '计算机学院', 0, '本科');
 INSERT INTO `readertable` VALUES ('xh', '123', '谢昊', 2, '软件工程', 0, '本科');
@@ -207,6 +213,8 @@ INSERT INTO `returntable` VALUES ('300001', '老人与海', '2019-07-08', '0', 0
 INSERT INTO `returntable` VALUES ('300002', '围殴', '2019-07-08', '0', 0, '2019-07-08');
 INSERT INTO `returntable` VALUES ('300001', '老人与海', '2019-07-08', '3.8', 38, '2019-05-01');
 INSERT INTO `returntable` VALUES ('300002', '围城2', '2019-07-08', '3.7', 37, '2019-05-02');
+INSERT INTO `returntable` VALUES ('300001', '老人与海', '2019-07-09', '0', 0, '2019-07-09');
+INSERT INTO `returntable` VALUES ('300002', '讲不完的故事', '2019-07-09', '0', 0, '2019-07-09');
 
 -- ----------------------------
 -- Triggers structure for table borrowtable
@@ -224,6 +232,42 @@ CREATE TRIGGER `Trig_borrow_delete` AFTER DELETE ON `borrowtable` FOR EACH ROW B
 	INSERT INTO returntable(reader_username,borrow_book_name,return_time,return_money,return_overtime,borrow_time)
 	VALUES(old.borrow_reader_username,old.borrow_book_name,date_format(now(), '%Y-%m-%d'),0,0,old.borrow_time);
 	END IF;
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Triggers structure for table borrowtable
+-- ----------------------------
+DROP TRIGGER IF EXISTS `Trig_number_insert`;
+delimiter ;;
+CREATE TRIGGER `Trig_number_insert` AFTER INSERT ON `borrowtable` FOR EACH ROW BEGIN
+	
+	declare num int;
+	select COUNT(*) into num
+	FROM borrowtable WHERE borrow_reader_username=new.borrow_reader_username;
+	
+	UPDATE readertable SET reader_borrow=num
+	WHERE reader_username=new.borrow_reader_username;
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Triggers structure for table borrowtable
+-- ----------------------------
+DROP TRIGGER IF EXISTS `Trig_number_delete`;
+delimiter ;;
+CREATE TRIGGER `Trig_number_delete` AFTER DELETE ON `borrowtable` FOR EACH ROW BEGIN
+	
+	declare num int;
+	select COUNT(*) into num
+	FROM borrowtable WHERE borrow_reader_username=old.borrow_reader_username;
+	
+	UPDATE readertable SET reader_borrow=num
+	WHERE reader_username=old.borrow_reader_username;
 
 END
 ;;
