@@ -15,3 +15,6 @@
        
        
 不足:由于是赶工项目,部分功能可能出现未知的bug,或者功能存在欠缺,比如不能按日期查询等,还望后人自行修改补充.加油.
+
+主界面图(还有很多功能界面可自行查看):
+![image](https://github.com/shadowxiehao/librarySystem/blob/master/主界面.png)
